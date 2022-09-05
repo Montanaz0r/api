@@ -21,7 +21,7 @@ PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
 PREFIX bif: <bif:>
 
-SELECT DISTINCT ?s
+SELECT DISTINCT ?s ?info
 WHERE {
     ?s a sosa:Observation . FILTER (strEnds(STR(?s), CONCAT('/','6888-Salps')))	
     BIND ("OGC SensorThings API - Observations" as ?info)	  
