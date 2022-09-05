@@ -6,7 +6,8 @@
 #+ pagination: 100
 #+ transform: {
 #+   "name": "?name",
-#+   "$anchor": "name"
+#+   "$anchor": "name",
+#+   "url": "?url",
 #+ }
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
