@@ -34,7 +34,7 @@ PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
 PREFIX bif: <bif:>
 
-SELECT DISTINCT ?info ?id ?id_link ?resultTime ?phenomenonTime ?densityOfJF ?sampleSizeValue ?scientificName ?wormsConcept ?datastream_link ?feature_link
+SELECT DISTINCT ?info ?id ?id_link ?resultTime ?phenomenonTime ?densityOfJF ?sampleSizeValue ?scientificName ?wormsConcept ?datastream_link ?feature_link ?total
 WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime ;
@@ -48,5 +48,9 @@ WHERE {
     BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?id,')')) AS ?id_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?id,')/Datastream')) AS ?datastream_link)
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?id,')/FeautureOfInterest')) AS ?feature_link)    
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?id,')/FeautureOfInterest')) AS ?feature_link)
+    {
+       SELECT (count(*) as ?total) WHERE { ?x a sosa:Observation }
+
+    }
 }
