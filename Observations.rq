@@ -12,8 +12,8 @@
 #+     "@iot.selfLink": "?id_link",
 #+     "phenomenonTime": "?phenomenonTime",
 #+     "resultTime": "?resultTime",
-#+     "DatastreamiotnavigationLink": "?datastream_link",
-#+     "FeatureOfInterestiotnavigationLink": "?feature_link",
+#+     "Datastream@iot.navigationLink": "?datastream_link",
+#+     "FeatureOfInterest@iot.navigationLink": "?feature_link",
 #+   }
 #+ }
 
