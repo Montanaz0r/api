@@ -8,6 +8,7 @@
 #+   "description": "?info",
 #+   "$anchor": "description",
 #+   "@iot.count": "?total",
+#+   "@iot.nextLink": "?next_link",
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
@@ -54,4 +55,6 @@ WHERE {
        SELECT (count(*) as ?total) WHERE { ?x a sosa:Observation }
 
     }
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', ?skip)) AS ?next_link)
+    BIND ((?_page*100) AS ?skip)
 }
