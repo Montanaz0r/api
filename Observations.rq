@@ -8,8 +8,8 @@
 #+   "description": "?info",
 #+   "$anchor": "description",
 #+   "value": {
-#+     "iotid": "?id",
-#+     "iotselfLink": "?id_link",
+#+     "@iotid": "?id",
+#+     "@iotselfLink": "?id_link",
 #+   }
 #+ }
 
