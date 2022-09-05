@@ -24,7 +24,7 @@ PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
 PREFIX bif: <bif:>
 
-SELECT DISTINCT ?info ?id ?id_link 
+SELECT DISTINCT ?info ?id ?id_link ?resultTime ?phenomenonTime ?densityOfJF ?sampleSizeValue ?scientificName ?wormsConcept ?datastream_link ?feature_link
 WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime ;
