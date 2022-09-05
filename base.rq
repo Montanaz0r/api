@@ -8,6 +8,7 @@
 #+   "name": "?name",
 #+   "$anchor": "name",
 #+   "value": {
+#+     "name": "?name",
 #+     "url": "?url",
 #+   }
 #+ }
