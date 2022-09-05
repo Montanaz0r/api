@@ -20,75 +20,13 @@ PREFIX bif: <bif:>
 
 SELECT ?name ?url
 WHERE {
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("Things" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/Things') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("Locations" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/Locations') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("HistoricalLocations" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/HistoricalLocations') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("Datastreams" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/Datastreams') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("Sensors" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/Sensors') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("Observations" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/Observations') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("ObservedProperties" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/ObservedProperties') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("FeaturesOfInterest" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/FeaturesOfInterest') AS ?url)
-      } LIMIT 1
-   }
+     VALUES (?name ?url) {
+     ("Things" <https://w3id.org/iliad/api/v1.0/Things>)
+     ("Locations" <https://w3id.org/iliad/api/v1.0/Locations>)
+     ("HistoricalLocations" <https://w3id.org/iliad/api/v1.0/HistoricalLocations>)
+     ("Datastreams" <https://w3id.org/iliad/api/v1.0/Datastreams>)
+     ("Sensors" <https://w3id.org/iliad/api/v1.0/Sensors>)
+     ("Observations" <https://w3id.org/iliad/api/v1.0/Observations>)
+     ("ObservedProperties" <https://w3id.org/iliad/api/v1.0/ObservedProperties>)
+     ("FeaturesOfInterest" <https://w3id.org/iliad/api/v1.0/FeaturesOfInterest>)}
 }
