@@ -19,7 +19,7 @@ PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
 PREFIX bif: <bif:>
 
-SELECT DISTINCT ?s ?ident
+SELECT DISTINCT ?s
 WHERE {
     ?s a sosa:Observation ;
 	  FILTER (strEnds(STR(?s), CONCAT('/',STR(?_id))))	
