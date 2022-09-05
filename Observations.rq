@@ -10,6 +10,10 @@
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
+#+     "phenomenonTime": "?phenomenonTime",
+#+     "resultTime": "?resultTime",
+#+     "DatastreamiotnavigationLink": "?datastream_link",
+#+     "FeatureOfInterestiotnavigationLink": "?feature_link",
 #+   }
 #+ }
 
