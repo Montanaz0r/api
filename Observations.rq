@@ -10,16 +10,6 @@
 #+   "value": {
 #+     "iotid": "?id",
 #+     "iotselfLink": "?id_link",
-#+     "phenomenonTime": "?phenomenonTime",
-#+     "resultTime": "?resultTime",
-#+     "result": {
-#+        "densityOfJF": "?densityOfJF",
-#+        "sampleSizeValue": "?sampleSizeValue",
-#+        "speciesScientificName": "?scientificName",
-#+        "wormsConcept": "?wormsConcept",
-#+     },
-#+     "DatastreamiotnavigationLink": "?datastream_link",
-#+     "FeatureOfInterestiotnavigationLink": "?feature_link",
 #+   }
 #+ }
 
