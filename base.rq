@@ -7,7 +7,6 @@
 #+ transform: {
 #+   "name": "?name",
 #+   	"$anchor": "name"
-#+   		"url": "?url"
 #+ }
 
 
