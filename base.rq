@@ -6,9 +6,6 @@
 #+ pagination: 100
 #+ transform: {
 #+   "id": "?name",
-#+   "metadata": {
-#+     "url": "?url",
-#+   },
 #+   "$anchor": "name"
 #+ }
 
