@@ -7,16 +7,6 @@
 #+ transform: {
 #+   "@iot.id": "?_id",
 #+   "@iot.selfLink": "?id_link",
-#+   "phenomenonTime": "?phenomenonTime",
-#+   "resultTime": "?resultTime",
-#+   "result": {
-#+      "densityOfJF": "?densityOfJF",
-#+      "sampleSizeValue": "?sampleSizeValue",
-#+      "speciesScientificName": "?scientificName",
-#+      "wormsConcept": "?wormsConcept",
-#+   },
-#+   "Datastream@iot.navigationLink": "?datastream_link",
-#+   "FeatureOfInterest@iot.navigationLink": "?feature_link",
 #+ }
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
@@ -30,7 +20,7 @@ PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
 PREFIX bif: <bif:>
 
-SELECT DISTINCT ?s ?id_link ?resultTime ?phenomenonTime ?densityOfJF ?sampleSizeValue ?scientificName ?wormsConcept ?datastream_link ?feature_link
+SELECT DISTINCT ?s ?id_link #?resultTime ?phenomenonTime ?densityOfJF ?sampleSizeValue ?scientificName ?wormsConcept ?datastream_link ?feature_link
 WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime ;
@@ -42,7 +32,7 @@ WHERE {
 			oim-jf:wormsConcept ?wormsConcept .
 	  FILTER (strEnds(STR(?s), CONCAT('/',STR(?_id))))	
     #BIND (URI(CONCAT('http://w3id.org/iliad/jellyfish/observation/', ?_id)) AS ?s)	
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?_id,')')) AS ?id_link)
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?_id,')/Datastream')) AS ?datastream_link)
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?_id,')/FeautureOfInterest')) AS ?feature_link)
+    #BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?_id,')')) AS ?id_link)
+    #BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?_id,')/Datastream')) AS ?datastream_link)
+    #BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?_id,')/FeautureOfInterest')) AS ?feature_link)
 }
