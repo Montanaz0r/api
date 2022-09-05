@@ -21,11 +21,19 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX sosa:  <http://www.w3.org/ns/sosa/>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#> 
+PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
 PREFIX bif: <bif:>
 
 SELECT DISTINCT ?info ?id ?id_link 
 WHERE {
-    ?s a sosa:Observation .    	
+    ?s a sosa:Observation ;
+    	sosa:resultTime ?resultTime ;
+			sosa:phenomenonTime ?phenomenonTime ;
+			sosa:hasResult ?result .
+    ?result oim-jf:densityOfJF ?densityOfJF ;
+			dwc:sampleSizeValue ?sampleSizeValue ;
+			dwc:scientificName ?scientificName ;
+			oim-jf:wormsConcept ?wormsConcept .
 		BIND ("OGC SensorThings API - Observations" as ?info)	  
     BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?id,')')) AS ?id_link)
