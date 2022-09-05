@@ -5,10 +5,11 @@
 #+ method: "GET"
 #+ pagination: 100
 #+ transform: {
-#+   "value": {
-#+   		"name": "?name",
-#+   		"$anchor": "name"
-#+   }
+#+   "name": "?name",
+#+   	"$anchor": "name"
+#+   	"value": {
+#+   		"url": "?url"
+#+   	}
 #+ }
 
 
