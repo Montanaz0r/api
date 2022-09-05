@@ -5,7 +5,7 @@
 #+ method: "GET"
 #+ pagination: 100
 #+ transform: {
-#+   "@iot.id": "?ident",
+#+   "@iot.id": "?s",
 #+ }
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
