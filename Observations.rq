@@ -12,6 +12,12 @@
 #+     "@iot.selfLink": "?id_link",
 #+     "phenomenonTime": "?phenomenonTime",
 #+     "resultTime": "?resultTime",
+#+     "result": {
+#+        "densityOfJF": "?densityOfJF",
+#+        "sampleSizeValue": "?sampleSizeValue",
+#+        "speciesScientificName": "?scientificName",
+#+        "wormsConcept": "?wormsConcept",
+#+     },
 #+     "Datastream@iot.navigationLink": "?datastream_link",
 #+     "FeatureOfInterest@iot.navigationLink": "?feature_link",
 #+   }
