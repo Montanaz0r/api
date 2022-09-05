@@ -7,7 +7,7 @@
 #+ transform: {
 #+   "description": "?info",
 #+   "$anchor": "description",
-#+   "@iot.count": ?total,
+#+   "@iot.count": "?total",
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
