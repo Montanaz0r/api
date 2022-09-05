@@ -8,8 +8,8 @@
 #+   "description": "?info",
 #+   "$anchor": "description",
 #+   "value": {
-#+     "iot.id": "?id",
-#+     "iot.selfLink": "?id_link",
+#+     "iotid": "?id",
+#+     "iotselfLink": "?id_link",
 #+     "phenomenonTime": "?phenomenonTime",
 #+     "resultTime": "?resultTime",
 #+     "result": {
@@ -18,8 +18,8 @@
 #+        "speciesScientificName": "?scientificName",
 #+        "wormsConcept": "?wormsConcept",
 #+     },
-#+     "Datastreamiot.navigationLink": "?datastream_link",
-#+     "FeatureOfInterestiot.navigationLink": "?feature_link",
+#+     "DatastreamiotnavigationLink": "?datastream_link",
+#+     "FeatureOfInterestiotnavigationLink": "?feature_link",
 #+   }
 #+ }
 
