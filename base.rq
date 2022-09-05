@@ -5,28 +5,30 @@
 #+ method: "GET"
 #+ pagination: 100
 #+ transform: {
-#+  	"name": "?name",
-#+    "$anchor": "name"
+#+   "id": "?s",
+#+   "metadata": {
+#+     "property": "?p",
+#+     "value": "?o"
+#+   },
+#+   "$anchor": "id"
 #+ }
 
-
-PREFIX iliad-api: <https://w3id.org/iliad/api>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dct: <http://purl.org/dc/terms/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX cybeleBase: <https://w3id.org/cybele/>
 PREFIX bif: <bif:>
 
-SELECT DISTINCT ?name ?url
+SELECT DISTINCT ?s ?p ?o
 WHERE {
-     VALUES (?name ?url) {
-     ("Things" <https://w3id.org/iliad/api/v1.0/Things>)
-     ("Locations" <https://w3id.org/iliad/api/v1.0/Locations>)
-     ("HistoricalLocations" <https://w3id.org/iliad/api/v1.0/HistoricalLocations>)
-     ("Datastreams" <https://w3id.org/iliad/api/v1.0/Datastreams>)
-     ("Sensors" <https://w3id.org/iliad/api/v1.0/Sensors>)
-     ("Observations" <https://w3id.org/iliad/api/v1.0/Observations>)
-     ("ObservedProperties" <https://w3id.org/iliad/api/v1.0/ObservedProperties>)
-     ("FeaturesOfInterest" <https://w3id.org/iliad/api/v1.0/FeaturesOfInterest>)}
+    ?s a dcat:Dataset.
+    ?s ?p ?o.
+    ?s ?p1 ?o1.
+    ?o1 skos:prefLabel ?label1.    
+    ?s ?p2 ?o2 .
+    ?o2 rdfs:label ?label2 .
+    ?s dct:title ?label3 .    
+    FILTER ((bif:contains(?label1,  ?_keyword) || bif:contains(?label2,  ?_keyword) || bif:contains(?label3,  ?_keyword)) && STRSTARTS (str(?s), str(cybeleBase:)))
 }
