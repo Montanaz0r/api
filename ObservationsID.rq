@@ -23,5 +23,4 @@ SELECT DISTINCT ?s ?ident
 WHERE {
     ?s a sosa:Observation ;
 	  FILTER (strEnds(STR(?s), CONCAT('/',STR(?_id))))	
-	  BIND (CONCAT('/',STR(?_id)) AS ?ident)
 }
