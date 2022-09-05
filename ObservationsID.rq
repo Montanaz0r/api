@@ -5,7 +5,7 @@
 #+ method: "GET"
 #+ pagination: 100
 #+ transform: {
-#+   "@iot.id": "?s",
+#+   "@iot.id": "?s"
 #+ }
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
@@ -21,6 +21,5 @@ PREFIX bif: <bif:>
 
 SELECT DISTINCT ?s
 WHERE {
-    ?s a sosa:Observation .
-	  FILTER (strEnds(STR(?s), CONCAT('/',STR(?_id))))	
+    ?s a sosa:Observation . FILTER (strEnds(STR(?s), CONCAT('/',?_id)))	
 }
