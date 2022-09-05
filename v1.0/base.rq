@@ -5,12 +5,13 @@
 #+ method: "GET"
 #+ pagination: 100
 #+ transform: {
+#+   "description": "?info",
+#+   "$anchor": "description",
 #+   "value": {
 #+     "name": "?name",
-#+     "url": "?url"
+#+     "url": "?url",
 #+   }
 #+ }
-
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -20,77 +21,15 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX bif: <bif:>
 
-SELECT ?name ?url
+SELECT DISTINCT ?info ?name ?url
 WHERE {
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("Things" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/Things') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("Locations" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/Locations') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("HistoricalLocations" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/HistoricalLocations') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("Datastreams" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/Datastreams') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("Sensors" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/Sensors') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("Observations" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/Observations') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("ObservedProperties" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/ObservedProperties') AS ?url)
-      } LIMIT 1
-   }
-   UNION
-   {
-      SELECT ?name ?url
-      WHERE {
-         ?s ?p ?o
-         BIND ("FeaturesOfInterest" AS ?name)
-         BIND (URI('https://w3id.org/iliad/api/v1.0/FeaturesOfInterest') AS ?url)
-      } LIMIT 1
-   }
+     VALUES (?info ?name ?url) {
+     ("OGC SensorThings API base resource path" "Things" <https://w3id.org/iliad/api/v1.0/Things>)
+     ("OGC SensorThings API base resource path" "Locations" <https://w3id.org/iliad/api/v1.0/Locations>)
+     ("OGC SensorThings API base resource path" "HistoricalLocations" <https://w3id.org/iliad/api/v1.0/HistoricalLocations>)
+     ("OGC SensorThings API base resource path" "Datastreams" <https://w3id.org/iliad/api/v1.0/Datastreams>)
+     ("OGC SensorThings API base resource path" "Sensors" <https://w3id.org/iliad/api/v1.0/Sensors>)
+     ("OGC SensorThings API base resource path" "Observations" <https://w3id.org/iliad/api/v1.0/Observations>)
+     ("OGC SensorThings API base resource path" "ObservedProperties" <https://w3id.org/iliad/api/v1.0/ObservedProperties>)
+     ("OGC SensorThings API base resource path" "FeaturesOfInterest" <https://w3id.org/iliad/api/v1.0/FeaturesOfInterest>)}
 }
