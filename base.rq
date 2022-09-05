@@ -7,9 +7,7 @@
 #+ transform: {
 #+   "name": "?name",
 #+   	"$anchor": "name"
-#+   	"XXXX": {
 #+   		"url": "?url"
-#+   	}
 #+ }
 
 
@@ -21,7 +19,7 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX bif: <bif:>
 
-SELECT ?name ?url
+SELECT DISTINCT ?name ?url
 WHERE {
      VALUES (?name ?url) {
      ("Things" <https://w3id.org/iliad/api/v1.0/Things>)
