@@ -40,7 +40,7 @@ WHERE {
 			dwc:sampleSizeValue ?sampleSizeValue ;
 			dwc:scientificName ?scientificName ;
 			oim-jf:wormsConcept ?wormsConcept .
-	  FILTER (strEnds(str(?s), CONCAT('/',?_id)))	
+	  FILTER (strEnds(STR(?s), CONCAT('/',STR(?_id))))	
     #BIND (URI(CONCAT('http://w3id.org/iliad/jellyfish/observation/', ?_id)) AS ?s)	
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?_id,')')) AS ?id_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?_id,')/Datastream')) AS ?datastream_link)
