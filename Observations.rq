@@ -23,16 +23,9 @@ PREFIX sosa:  <http://www.w3.org/ns/sosa/>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#> 
 PREFIX bif: <bif:>
 
-SELECT DISTINCT ?info ?id ?id_link ?resultTime ?phenomenonTime ?densityOfJF ?sampleSizeValue ?scientificName ?wormsConcept ?datastream_link ?feature_link
+SELECT DISTINCT ?info ?id ?id_link 
 WHERE {
-    ?s a sosa:Observation ;
-    	sosa:resultTime ?resultTime ;
-			sosa:phenomenonTime ?phenomenonTime ;
-			sosa:hasResult ?result .
-    ?result oim-jf:densityOfJF ?densityOfJF ;
-			dwc:sampleSizeValue ?sampleSizeValue ;
-			dwc:scientificName ?scientificName ;
-			oim-jf:wormsConcept ?wormsConcept .
+    ?s a sosa:Observation .    	
 		BIND ("OGC SensorThings API - Observations" as ?info)	  
     BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?id,')')) AS ?id_link)
