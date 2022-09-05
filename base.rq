@@ -5,8 +5,6 @@
 #+ method: "GET"
 #+ pagination: 100
 #+ transform: {
-#+   "id": "?name",
-#+   "$anchor": "id",
 #+   "name": "?name",
 #+   "url": "?url"
 #+ }
