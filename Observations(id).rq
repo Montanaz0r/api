@@ -1,4 +1,4 @@
-#+ summary: "Retrieve all Observations"
+#+ summary: "Retrieve a specific Observation"
 #+ description: "NOTE: make sure response content type is application/json"
 #+ endpoint: "https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample"
 #+ tags: [ "json" ]
