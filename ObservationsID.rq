@@ -21,6 +21,6 @@ PREFIX bif: <bif:>
 
 SELECT DISTINCT ?s
 WHERE {
-    ?s a sosa:Observation ;
+    ?s a sosa:Observation .
 	  FILTER (strEnds(STR(?s), CONCAT('/',STR(?_id))))	
 }
