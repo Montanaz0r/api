@@ -6,7 +6,7 @@
 #+ pagination: 100
 #+ transform: {
 #+   "name": "?name",
-#+   "url": "?url"
+#+   "$anchor": "name",
 #+ }
 
 
