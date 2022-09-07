@@ -34,10 +34,13 @@ WHERE {
             dwc:sampleSizeValue ?sampleSizeValue ;
             dwc:scientificName ?scientificName ;
             oim-jf:wormsConcept ?wormsConcept .
+   OPTIONAL { ?s ?p ?_otro } 
+   BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', ?_otro*100)) AS ?otroInfo)
+   
     #FILTER (contains(STR(?resultTime), ?_otro))
     
-		BIND ((strlen(STR(?s)) > xsd:integer(?_otro)) AS ?otroInfo)
-		BIND ((xsd:integer(year(xsd:dateTime(?resultTime))) > xsd:integer(?_otro)) AS ?otroInfo1)
+#		BIND ((strlen(STR(?s)) > xsd:integer(?_otro)) AS ?otroInfo)
+#		BIND ((xsd:integer(year(xsd:dateTime(?resultTime))) > xsd:integer(?_otro)) AS ?otroInfo1)
 #		BIND (IF (year(xsd:dateTime(?resultTime) > xsd:integer(?_otro)), "yes" ,"no") AS ?otroInfo1)
 # works    	sosa:phenomenomTime ?_otro_number;
 # works   	sosa:result ?_checking .
