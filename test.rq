@@ -26,12 +26,14 @@ PREFIX bif: <bif:>
 SELECT DISTINCT ?s ?resultTime ?otroInfo
 WHERE {
     ?s a sosa:Observation ;
-    	sosa:resultTime ?resultTime .
+    	sosa:resultTime ?resultTime ;
+    	sosa:phenomenomTime ?_otro_number;
+    	sosa:result ?_checking .
 #    FILTER (strEnds(STR(?s), CONCAT('/',?_otro)))
 #		 FILTER (strlen(STR(?s)) > ?_otro_number) 
 #    FILTER (xsd:integer(year(xsd:dateTime(?resultTime))) > xsd:integer(?_otro))	
 #    BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
-     BIND (IF (?_otro_number > 1), "yes", "no") as ?otroInfo) 
+#     BIND (IF (?_otro_number > 1), "yes", "no") as ?otroInfo) 
 }
 
 
