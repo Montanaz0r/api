@@ -8,7 +8,6 @@
 #+   "@iot.id": "?s",
 #+   "$anchor": "@iot.id",
 #+   "resultTime": "?resultTime",
-#+   "otroInfo": "?otroInfo",
 #+   "checkInfo": "?checkInfo",
 #+ }
 
@@ -27,9 +26,9 @@ SELECT DISTINCT ?s ?resultTime ?otroInfo ?checkInfo
 WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime .
-    FILTER (strEnds(STR(?s), CONCAT('/',?_otro)))	
-    FILTER (year(xsd:dateTime(?resultTime)) > ?_check)	
-    BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
-    BIND (CONCAT('otro parameter: ', ?_check) AS ?checkInfo)
+#    FILTER (strEnds(STR(?s), CONCAT('/',?_otro)))	
+    FILTER (year(xsd:dateTime(?resultTime)) > ?_page)	
+#    BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
+    BIND (CONCAT('otro parameter: ', ?_page) AS ?checkInfo)
 #    BIND (IF (!BOUND(?__check), "nothing", "hay") as ?checkInfo)
 }
