@@ -9,6 +9,7 @@
 #+   "$anchor": "@iot.id",
 #+   "resultTime": "?resultTime",
 #+   "otroInfo": "?otroInfo",
+#+   "checkInfo": "?checkInfo",
 #+ }
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
@@ -22,10 +23,11 @@ PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
 PREFIX bif: <bif:>
 
-SELECT DISTINCT ?s ?resultTime ?otroInfo
+SELECT DISTINCT ?s ?resultTime ?otroInfo ?checkInfo
 WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime .
     FILTER (strEnds(STR(?s), CONCAT('/',?_otro)))	
     BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
+    BIND (CONCAT('check parameter: ', ?_check) AS ?checkInfo)
 }
