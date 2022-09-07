@@ -34,6 +34,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX sosa:  <http://www.w3.org/ns/sosa/>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#> 
 PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX bif: <bif:>
 
 SELECT DISTINCT ?info ?id ?id_link ?resultTime ?phenomenonTime ?densityOfJF ?sampleSizeValue ?scientificName ?wormsConcept ?datastream_link ?feature_link ?total ?next_link
@@ -56,5 +57,5 @@ WHERE {
 
     }
     OPTIONAL { ?s ?p ?_page } 
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', ?_page*100)) AS ?next_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', xsd:integer(?_page)*100)) AS ?next_link)
 }
