@@ -27,8 +27,8 @@ WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime .
 #    FILTER (strEnds(STR(?s), CONCAT('/',?_otro)))	
-    FILTER (year(xsd:dateTime(?resultTime)) > ?_page)	
+    FILTER (year(xsd:dateTime(?resultTime)) > ?_otro)	
 #    BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
-    BIND (CONCAT('otro parameter: ', ?_page) AS ?checkInfo)
+    BIND (CONCAT('otro parameter: ', ?_otro) AS ?checkInfo)
 #    BIND (IF (!BOUND(?__check), "nothing", "hay") as ?checkInfo)
 }
