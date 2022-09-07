@@ -30,7 +30,7 @@ WHERE {
 #    FILTER (strEnds(STR(?s), CONCAT('/',?_otro)))
 		 FILTER (strlen(STR(?s)) > ?_otro_integer) 
 #    FILTER (xsd:integer(year(xsd:dateTime(?resultTime))) > xsd:integer(?_otro))	
-    BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
+#    BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
 }
 
 
