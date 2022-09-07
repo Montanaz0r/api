@@ -27,7 +27,7 @@ WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime .
 #    FILTER (strEnds(STR(?s), CONCAT('/',STR(?_otro_number))))
-		 FILTER (strlen(STR(?s)) != ?_otro_number) 
+		 FILTER (strlen(STR(?s)) > ?_otro_number) 
 #    FILTER (xsd:integer(year(xsd:dateTime(?resultTime))) > xsd:integer(?_otro))	
 #    BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
 }
