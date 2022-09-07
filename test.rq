@@ -26,6 +26,6 @@ SELECT DISTINCT ?s ?resultTime ?otroInfo
 WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime .
-#    FILTER (strEnds(STR(?s), CONCAT('/',?_id)))	
+    FILTER (strEnds(STR(?s), CONCAT('/',?_otro)))	
     BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
 }
