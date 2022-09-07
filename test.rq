@@ -8,6 +8,7 @@
 #+   "@iot.id": "?s",
 #+   "$anchor": "@iot.id",
 #+   "resultTime": "?resultTime",
+#+   "icon": "?idInfo",
 #+   "icon": "?pageInfo",
 #+ }
 
