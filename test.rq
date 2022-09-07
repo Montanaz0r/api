@@ -7,7 +7,6 @@
 #+ transform: {
 #+   "@iot.id": "?s",
 #+   "$anchor": "@iot.id",
-#+   "resultTime": "?resultTime",
 #+   "pageInfo": "?pageInfo",
 #+ }
 
