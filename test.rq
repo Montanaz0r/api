@@ -34,7 +34,7 @@ WHERE {
             dwc:sampleSizeValue ?sampleSizeValue ;
             dwc:scientificName ?scientificName ;
             oim-jf:wormsConcept ?wormsConcept .
-    FILTER (contains(STR(?resultTime), ?_otro))
+    #FILTER (contains(STR(?resultTime), ?_otro))
     
 		BIND ((strlen(STR(?s)) > xsd:integer(?_otro)) AS ?otroInfo)
 		BIND ((xsd:integer(year(xsd:dateTime(?resultTime))) > xsd:integer(?_otro)) AS ?otroInfo1)
