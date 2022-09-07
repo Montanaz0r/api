@@ -29,5 +29,5 @@ WHERE {
     	sosa:resultTime ?resultTime .
     FILTER (strEnds(STR(?s), CONCAT('/',?_id)))	
     BIND (CONCAT('id parameter: ', ?_id) AS ?idInfo)
-    BIND (CONCAT('page parameter: ', ?_page) AS ?pageInfo)
+    BIND (CONCAT('page parameter: ', STR(?_page)) AS ?pageInfo)
 }
