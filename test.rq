@@ -20,6 +20,7 @@ PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX sosa:  <http://www.w3.org/ns/sosa/>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#> 
 PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX bif: <bif:>
 
 SELECT DISTINCT ?s ?resultTime ?otroInfo
