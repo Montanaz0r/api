@@ -37,7 +37,7 @@ WHERE {
     FILTER (contains(STR(?resultTime), ?_otro))
     
 		BIND ((strlen(STR(?s)) > xsd:integer(?_otro)) AS ?otroInfo)
-		BIND (year(xsd:dateTime(?resultTime)) AS ?otroInfo1)
+		BIND (year(xsd:dateTime(?resultTime) < xsd:integer(?_otro)) AS ?otroInfo1)
 # works    	sosa:phenomenomTime ?_otro_number;
 # works   	sosa:result ?_checking .
 # works    FILTER (strEnds(STR(?s), CONCAT('/',?_otro)))
