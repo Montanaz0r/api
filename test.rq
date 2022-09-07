@@ -9,7 +9,7 @@
 #+   "$anchor": "@iot.id",
 #+   "resultTime": "?resultTime",
 #+   "otro": "?otroInfo",
-#+   "otro": "?otroInfo1",
+#+   "otro1": "?otroInfo1",
 #+ }
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
