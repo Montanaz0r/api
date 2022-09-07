@@ -25,8 +25,7 @@ PREFIX bif: <bif:>
 SELECT DISTINCT ?s ?resultTime ?idInfo #?pageInfo
 WHERE {
     ?s a sosa:Observation ;
-    	sosa:resultTime ?resultTime ;
+    	sosa:resultTime ?resultTime .
     FILTER (strEnds(STR(?s), CONCAT('/',?_id)))	
     BIND (CONCAT('id parameter: ', ?_id) AS ?idInfo)
-#    BIND (CONCAT('page parameter: ', ?_page) AS ?pageInfo)  
 }
