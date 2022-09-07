@@ -34,7 +34,7 @@ WHERE {
 #    FILTER (xsd:integer(year(xsd:dateTime(?resultTime))) > xsd:integer(?_otro))	
 #    BIND ('otro parameter: ', ?_otro) AS ?otroInfo)
 #    BIND (IF (?_otro_number > 1), "yes", "no") as ?otroInfo) 
-     FILTER (contains(STR(?resultTime), ?_otro))
+     FILTER (contains(STR(?resultTime), ?_page))
 }
 
 
