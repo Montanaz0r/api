@@ -8,8 +8,8 @@
 #+   "@iot.id": "?s",
 #+   "$anchor": "@iot.id",
 #+   "resultTime": "?resultTime",
-#+   "icon": "?idInfo",
-#+   "icon": "?pageInfo",
+#+   "idInfo": "?idInfo",
+#+   "pageInfo": "?pageInfo",
 #+ }
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
