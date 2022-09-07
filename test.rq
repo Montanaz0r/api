@@ -28,6 +28,8 @@ WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime .
     FILTER (strEnds(STR(?s), CONCAT('/',?_otro)))	
+    FILTER (year(xsd:dateTime(?resultTime)) > ?_check)	
     BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
-    BIND (IF (!BOUND(?__check), "nothing", "hay") as ?checkInfo)
+    BIND (CONCAT('otro parameter: ', ?_check) AS ?checkInfo)
+#    BIND (IF (!BOUND(?__check), "nothing", "hay") as ?checkInfo)
 }
