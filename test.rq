@@ -33,7 +33,8 @@ WHERE {
             dwc:sampleSizeValue ?sampleSizeValue ;
             dwc:scientificName ?scientificName ;
             oim-jf:wormsConcept ?wormsConcept .
-		FILTER (strlen(STR(?s)) > ?_otro_number)
+    FILTER (contains(STR(?resultTime), ?_otro))
+		BIND ((strlen(STR(?s)) > xsd:integer(?_otro)) AS ?otroInfo)
 # works    	sosa:phenomenomTime ?_otro_number;
 # works   	sosa:result ?_checking .
 # works    FILTER (strEnds(STR(?s), CONCAT('/',?_otro)))
