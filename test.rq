@@ -26,5 +26,5 @@ SELECT DISTINCT ?s ?resultTime ?pageInfo
 WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime .
-    BIND (CONCAT('page parameter: ', STR(?_page)) AS ?pageInfo)
+    BIND (CONCAT('page parameter: ', STR(?_otro)) AS ?pageInfo)
 }
