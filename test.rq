@@ -27,7 +27,7 @@ SELECT DISTINCT ?s ?resultTime ?otroInfo
 WHERE {
     ?s a sosa:Observation ;
     	sosa:resultTime ?resultTime .
-#    FILTER (year(xsd:dateTime(?resultTime)) > ?_otro)	    
+    FILTER (year(xsd:dateTime(?resultTime)) > ?_otro)	    
 #    BIND (CONCAT('otro parameter: ', ?_otro) AS ?otroInfo)
     BIND (year(xsd:dateTime(?resultTime)) AS ?otroInfo)
 }
