@@ -60,4 +60,4 @@ WHERE {
     OPTIONAL { ?s ?p ?_top }
     OPTIONAL { ?s ?p ?_skip }
 }
-ORDER BY ?s LIMIT 100 OFFSET 100
+ORDER BY ?s LIMIT ?_top OFFSET ?_skip
