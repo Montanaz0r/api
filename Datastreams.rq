@@ -22,7 +22,11 @@
 #+     "Observations@iot.navigationLink": "?obs_link",
 #+     "ObservedProperty@iot.navigationLink": "?op_link",
 #+     "Sensor@iot.navigationLink": "?sensor_link",
+<<<<<<< HEAD
 #+     "Thing@iot.navigationLink": "?thing_link",
+=======
+#+     "Thing@iot.navigationLink": "?thing_link"
+>>>>>>> 8b601e6 (test_datastreams)
 #+   }
 #+ }
 
