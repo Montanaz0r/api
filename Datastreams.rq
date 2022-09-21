@@ -12,13 +12,6 @@
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
-#+     "description: "The datastream of jellyFish Abundance by user sensor",
-#+     "observationType": "?obs_type",
-#+     "unitOfMeasurement": {
-#+        "symbol": "U",
-#+        "name": "Unitless",
-#+        "definition": "?unit",
-#+     },
 #+     "Observations@iot.navigationLink": "?obs_link",
 #+     "ObservedProperty@iot.navigationLink": "?op_link",
 #+     "Sensor@iot.navigationLink": "?sensor_link",
