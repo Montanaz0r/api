@@ -64,6 +64,11 @@ WHERE {
     BIND (URI("U") AS ?unit_symbol)
     BIND (URI("Unitless") AS ?unit_name)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')')) AS ?id_link)
+<<<<<<< HEAD
+=======
+    OPTIONAL { ?s ?p ?_page_integer } 
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
+>>>>>>> 3f29806 (test_datastreams)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')/Observations')) AS ?obs_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')/ObservedProperty')) AS ?op_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')/Sensor')) AS ?sensor_link)
