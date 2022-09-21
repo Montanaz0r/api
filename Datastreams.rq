@@ -12,7 +12,7 @@
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
-#+     "description: "The datastream of jellyFish Abundance by user sensor"
+#+     "description: "The datastream of jellyFish Abundance by user sensor",
 #+     "observationType": "?obs_type",
 #+     "unitOfMeasurement": {
 #+        "symbol": "U",
