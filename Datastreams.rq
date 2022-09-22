@@ -13,6 +13,9 @@
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
 #+     "observationType": "?obs_type",
+#+     "unitOfMeasurement": {
+#+        "definition": "?unit",
+#+     },
 #+     "Observations@iot.navigationLink": "?obs_link",
 #+     "ObservedProperty@iot.navigationLink": "?op_link",
 #+     "Sensor@iot.navigationLink": "?sensor_link",
