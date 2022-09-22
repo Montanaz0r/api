@@ -12,7 +12,7 @@
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
-#+     "description: "?desc_info",
+#+     "description_x: "?desc_info",
 #+     "observationType": "?obs_type",
 #+     "unitOfMeasurement": {
 #+        "definition": "?unit",
