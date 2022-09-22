@@ -12,7 +12,6 @@
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
-#+     "description: "?desc_info",
 #+     "observationType": "?obs_type",
 #+     "Observations@iot.navigationLink": "?obs_link",
 #+     "ObservedProperty@iot.navigationLink": "?op_link",
