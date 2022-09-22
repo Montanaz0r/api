@@ -15,8 +15,6 @@
 #+     "description: "?desc_info",
 #+     "observationType": "?obs_type",
 #+     "unitOfMeasurement": {
-#+        "symbol": "U",
-#+        "name": "Unitless",
 #+        "definition": "?unit",
 #+     },
 #+     "Observations@iot.navigationLink": "?obs_link",
