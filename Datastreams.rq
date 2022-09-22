@@ -5,8 +5,8 @@
 #+ method: "GET"
 #+ pagination: 100
 #+ transform: {
-#+   "description_service": "?info",
-#+   "$anchor": "description_service",
+#+   "description": "?info",
+#+   "$anchor": "description",
 #+   "@iot.count": "?total",
 #+   "@iot.nextLink": "?next_link",
 #+   "value": {
