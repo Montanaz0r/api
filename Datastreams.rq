@@ -12,7 +12,17 @@
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
+#+     "description: "?desc_info",
 #+     "observationType": "?obs_type",
+#+     "unitOfMeasurement": {
+#+        "symbol": "U",
+#+        "name": "Unitless",
+#+        "definition": "?unit",
+#+     },
+#+     "Observations@iot.navigationLink": "?obs_link",
+#+     "ObservedProperty@iot.navigationLink": "?op_link",
+#+     "Sensor@iot.navigationLink": "?sensor_link",
+#+     "Thing@iot.navigationLink": "?thing_link",
 #+   }
 #+ }
 
@@ -29,7 +39,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX bif: <bif:>
 
 
-SELECT DISTINCT ?info ?obs_property ?sensor ?total ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?unit
+SELECT DISTINCT ?info ?obs_property ?sensor ?total ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?unit ?desc_info
 WHERE {
     ?s a sosa:Observation ;
         sosa:observedProperty ?obs_property ;
@@ -39,6 +49,7 @@ WHERE {
     }
     BIND ("OGC SensorThings API - Datastreams" as ?info)
     BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
+    BIND ("The datastream of jellyFish Abundance by user sensor" as ?desc_info)
     BIND (URI("http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation") AS ?obs_type)
     BIND (URI("http://qudt.org/2.1/vocab/unit") AS ?unit)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')')) AS ?id_link)
