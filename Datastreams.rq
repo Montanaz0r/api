@@ -42,9 +42,6 @@ WHERE {
     ?s a sosa:Observation ;
         sosa:observedProperty ?obs_property ;
         sosa:madeBySensor ?sensor .
-    {
-       SELECT (count(*) as ?total) WHERE { ?x a sosa:Observation }
-    }
     BIND ("OGC SensorThings API - Datastreams" as ?info)
     BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
     BIND ("The datastream of jellyFish Abundance by user sensor" as ?desc_info)
