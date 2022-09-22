@@ -5,13 +5,14 @@
 #+ method: "GET"
 #+ pagination: 100
 #+ transform: {
-#+   "description": "?info",
-#+   "$anchor": "description",
+#+   "description_service": "?info",
+#+   "$anchor": "description_service",
 #+   "@iot.count": "?total",
 #+   "@iot.nextLink": "?next_link",
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
+#+     "description: "?desc_info",
 #+     "observationType": "?obs_type",
 #+     "unitOfMeasurement": {
 #+        "definition": "?unit",
