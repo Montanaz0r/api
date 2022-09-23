@@ -4,9 +4,8 @@
 #+ tags: [ "json" ]
 #+ method: "GET"
 #+ pagination: 100
-#+ defaults: {
-#+   "?_page": 1
-#+  }
+#+ defaults:
+#+  - page: 1
 #+ transform: {
 #+   "description": "?info",
 #+   "$anchor": "description",
