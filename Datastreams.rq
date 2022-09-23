@@ -5,7 +5,7 @@
 #+ method: "GET"
 #+ pagination: 100
 #+ defaults:
-#+   - page: 1
+#+   - _page: 1
 #+ transform: {
 #+   "description": "?info",
 #+   "$anchor": "description",
