@@ -4,6 +4,9 @@
 #+ tags: [ "json" ]
 #+ method: "GET"
 #+ pagination: 100
+#+ defaults: {
+#+   "?_page": "1"
+#+  }
 #+ transform: {
 #+   "description": "?info",
 #+   "$anchor": "description",
@@ -39,7 +42,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX bif: <bif:>
 
 
-SELECT DISTINCT ?info ?obs_property ?sensor ?total ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name
+SELECT DISTINCT ?info ?obs_property ?sensor ?total ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name ?next_link
 WHERE {
     ?s a sosa:Observation ;
         sosa:observedProperty ?obs_property ;
