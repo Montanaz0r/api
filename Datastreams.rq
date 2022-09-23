@@ -1,9 +1,8 @@
-#+ summary: Retrieves all the information about ILIAD Datastreams
-#+ description: NOTE: make sure response content type is application/json
-#+ endpoint: https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample
-#+ tags:
-#+   - json 
-#+ method: GET
+#+ summary: "Retrieves all the information about ILIAD Datastreams"
+#+ description: "NOTE: make sure response content type is application/json"
+#+ endpoint: "https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample"
+#+ tags: [ "json" ]
+#+ method: "GET"
 #+ pagination: 100
 #+ transform: {
 #+   "description": "?info",
@@ -20,21 +19,10 @@
 #+       "name": "?unit_name",
 #+       "definition": "?unit_definition",
 #+     },
-<<<<<<< HEAD
 #+     "Observations@iot.navigationLink": "?obs_link",
 #+     "ObservedProperty@iot.navigationLink": "?op_link",
 #+     "Sensor@iot.navigationLink": "?sensor_link",
-<<<<<<< HEAD
 #+     "Thing@iot.navigationLink": "?thing_link",
-=======
-#+     "Thing@iot.navigationLink": "?thing_link"
->>>>>>> 8b601e6 (test_datastreams)
-=======
-#+   "Observations@iot.navigationLink": "?obs_link",
-#+   "ObservedProperty@iot.navigationLink": "?op_link",
-#+   "Sensor@iot.navigationLink": "?sensor_link",
-#+   "Thing@iot.navigationLink": "?thing_link"
->>>>>>> e05e8bb (test_datastreams)
 #+   }
 #+ }
 
@@ -64,11 +52,6 @@ WHERE {
     BIND (URI("U") AS ?unit_symbol)
     BIND (URI("Unitless") AS ?unit_name)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')')) AS ?id_link)
-<<<<<<< HEAD
-=======
-    OPTIONAL { ?s ?p ?_page_integer } 
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
->>>>>>> 3f29806 (test_datastreams)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')/Observations')) AS ?obs_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')/ObservedProperty')) AS ?op_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')/Sensor')) AS ?sensor_link)
