@@ -6,7 +6,7 @@
 #+ method: GET
 #+ pagination: 100
 #+ transform: {
-#+   "@iot.id": "?ds_id",
+#+   "@iot.id": "?_ds_id",
 #+   "$anchor": "?@iot.id",
 #+   "@iot.selfLink": "?ds_link",
 #+   "description": "?ds_link",
@@ -27,11 +27,12 @@ PREFIX iliad-api: <https://w3id.org/iliad/api>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sosa:  <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX spif: <http://spinrdf.org/spif#>
 
 
-SELECT DISTINCT ?ds_id 
+SELECT DISTINCT ?s
 WHERE {
-    ?ds_id a sosa:Observation ;
+    ?s a sosa:Observation ;
         sosa:observedProperty ?obs_property ;
         sosa:madeBySensor ?sensor .
     BIND ("OGC SensorThings API - Datastreams" as ?info)

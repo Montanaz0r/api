@@ -40,8 +40,11 @@ WHERE {
         sosa:madeBySensor ?sensor .
     BIND ("OGC SensorThings API - Datastreams" as ?info)
     #BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
-    BIND (SHA256(CONCAT(?sensor, ?obs_property)) as ?id)
-    BIND (CONCAT("The datastream of jellyFish Abundance by user sensor: ",?sensor, " for observed property: ",?obs_property) as ?desc_info)
+    #BIND (SHA256(CONCAT(?sensor, ?obs_property)) as ?id)
+    BIND (STRAFTER(?sensor, "sensor/") AS ?sensor_raw)
+    BIND (STRAFTER(?obs_property, "property/") AS ?obs_property_raw)
+    BIND (CONCAT(?sensor_raw, "+", ?obs_property_raw) AS ?id)
+    BIND (CONCAT("The datastream of jellyFish Abundance by user sensor: ",?sensor, " for observed property: ",?obs_property) AS ?desc_info)
     BIND (URI("http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation") AS ?obs_type)
     BIND (URI("http://qudt.org/2.1/vocab/unit") AS ?unit_definition)
     BIND (URI("U") AS ?unit_symbol)
