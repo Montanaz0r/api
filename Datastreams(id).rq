@@ -4,7 +4,6 @@
 #+ tags:
 #+   - json
 #+ method: GET
-#+ pagination: 100
 #+ transform: {
 #+   "@iot.id": "?_ds_id",
 #+   "$anchor": "?@iot.id",
@@ -30,7 +29,7 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX spif: <http://spinrdf.org/spif#>
 
 
-SELECT DISTINCT ?s ?obs_property ?sensor ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name
+SELECT DISTINCT ?s ?obs_property ?sensor ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name ?_datastream_id
 WHERE {
     ?s a sosa:Observation ;
         sosa:observedProperty ?obs_property ;
