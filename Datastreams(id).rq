@@ -4,6 +4,7 @@
 #+ tags:
 #+   - json
 #+ method: GET
+#+ endpoint_in_url: False
 #+ transform: {
 #+   "@iot.id": "?_ds_id",
 #+   "$anchor": "?@iot.id",
