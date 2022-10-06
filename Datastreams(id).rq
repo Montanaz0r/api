@@ -6,7 +6,8 @@
 #+ method: GET
 #+ endpoint_in_url: False
 #+ transform: {
-#+   "@iot.id": "?_datastream",
+#+   "@iot.id": "?datastream",
+#+   "$anchor": "@iot.id",
 #+   "@iot.selfLink": "?id_link",
 #+   "description": "?desc_info",
 #+   "name": "?name",
@@ -27,7 +28,7 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sosa:  <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT DISTINCT ?s ?obs_property ?sensor ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name ?_datastream
+SELECT DISTINCT ?s ?obs_property ?sensor ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name ?_datastream ?name
 WHERE {
     ?s a sosa:Observation ;
         sosa:observedProperty ?obs_property ;
