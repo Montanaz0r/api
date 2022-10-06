@@ -7,7 +7,6 @@
 #+ endpoint_in_url: False
 #+ transform: {
 #+   "@iot.id": "?_datastream",
-#+   "$anchor": "?@iot.id",
 #+   "@iot.selfLink": "?id_link",
 #+   "description": "?desc_info",
 #+   "name": "?name",
