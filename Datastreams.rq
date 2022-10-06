@@ -39,7 +39,6 @@ WHERE {
         sosa:observedProperty ?obs_property ;
         sosa:madeBySensor ?sensor .
     BIND ("OGC SensorThings API - Datastreams" as ?info)
-    #BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
     #BIND (SHA256(CONCAT(?sensor, ?obs_property)) as ?id)
     BIND (STRAFTER(STR(?sensor), "sensor/") AS ?sensor_raw)
     BIND (STRAFTER(STR(?obs_property), "property/") AS ?obs_property_raw)

@@ -8,8 +8,8 @@
 #+ transform: {
 #+   "@iot.id": "?_ds_id",
 #+   "$anchor": "?@iot.id",
-#+   "@iot.selfLink": "?ds_link",
-#+   "description": "?ds_link",
+#+   "@iot.selfLink": "?id_link",
+#+   "description": "?desc_info",
 #+   "name": "?name",
 #+   "observationType": "?obs_type",
 #+   "unitOfMeasurement": {
@@ -30,27 +30,24 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX spif: <http://spinrdf.org/spif#>
 
 
-SELECT DISTINCT ?s
+SELECT DISTINCT ?s ?obs_property ?sensor ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name
 WHERE {
     ?s a sosa:Observation ;
         sosa:observedProperty ?obs_property ;
         sosa:madeBySensor ?sensor .
-    BIND ("OGC SensorThings API - Datastreams" as ?info)
-    BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
+    BIND (STRBEFORE(STR(?_datastream_id), "+") AS ?sensor_raw)
+    BIND (STRAFTER(STR(?_datastream_id), "+") AS ?obs_property_raw)
+    BIND (URI(CONCAT("http://w3id.org/iliad/jellyfish/sensor/", ?sensor_raw)) AS ?sensor)
+    BIND (URI(CONCAT("http://w3id.org/iliad/jellyfish/property/", ?obs_property_raw)) AS ?obs_property)
     BIND (CONCAT("The datastream of jellyFish Abundance by user sensor: ",?sensor, " for observed property: ",?obs_property) as ?desc_info)
+    BIND (CONCAT(?sensor_raw, ':', ?obs_property_raw) AS ?name)
     BIND (URI("http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation") AS ?obs_type)
     BIND (URI("http://qudt.org/2.1/vocab/unit") AS ?unit_definition)
     BIND (URI("U") AS ?unit_symbol)
     BIND (URI("Unitless") AS ?unit_name)
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')')) AS ?id_link)
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')/Observations')) AS ?obs_link)
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')/ObservedProperty')) AS ?op_link)
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')/Sensor')) AS ?sensor_link)
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?id,')/Thing')) AS ?thing_link)
-    {
-       SELECT (count(*) as ?total) WHERE { ?x a sosa:Observation }
-
-    }
-    OPTIONAL { ?s ?p ?_page_integer } 
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
-} GROUP BY ?sensor ?obs_property
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?_datastream_id,')')) AS ?id_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?_datastream_id,')/Observations')) AS ?obs_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?_datastream_id,')/ObservedProperty')) AS ?op_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?_datastream_id,')/Sensor')) AS ?sensor_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?_datastream_id,')/Thing')) AS ?thing_link)
+}
