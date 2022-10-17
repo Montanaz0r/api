@@ -13,7 +13,6 @@
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
 #+     "description": "?desc_info",
-#+     "name": ?thing_name",
 #+     },
 #+ }
 
