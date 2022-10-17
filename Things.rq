@@ -13,7 +13,7 @@
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
 #+     "description": "?desc_info",
-#+     "name": ?name",
+#+     "name": ?thing_name",
 #+     },
 #+ }
 
@@ -31,5 +31,5 @@ WHERE {
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Things(', ?id,')/HistoricalLocations')) AS ?hloc_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Things(', ?id,')/Locations')) AS ?loc_link)
     BIND (STR("System monitoring JellyFish Abundance") AS ?desc_info)
-    BIND (STR("JellyFish Abundance Monitoring System") AS ?name)
+    BIND (STR("JellyFish Abundance Monitoring System") AS ?thing_name)
 }
