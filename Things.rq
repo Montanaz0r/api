@@ -26,9 +26,8 @@ SELECT DISTINCT ?thing_name ?total ?next_link ?id ?id_link ?ds_link ?hloc_link ?
 WHERE {
     ?s ?p ?o
     BIND (STR(1) AS ?total)
-    # OPTIONAL { ?s ?p ?_page_integer }
-    # BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
-    BIND (STR("SOMETHING") AS ?next_link)
+    OPTIONAL { ?s ?p ?_page_integer }
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
     BIND (STR("JellyFishAbundance_Observation_System_1") AS ?id)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Things(', ?id,')')) AS ?id_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Things(', ?id,')/Datastreams')) AS ?ds_link)
