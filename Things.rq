@@ -14,8 +14,6 @@
 #+     "@iot.selfLink": "?id_link",
 #+     "description": "?desc_info",
 #+     "name": ?name",
-#+     "properties": {
-#+     },
 #+     "Datastreams@iot.navigationLink": "?ds_link",
 #+     "HistoricalLocations@iot.navigationLink": "?hloc_link",
 #+     "Locations@iot.navigationLink": "?loc_link",
@@ -28,7 +26,7 @@ SELECT DISTINCT ?info ?name ?url ?total ?next_link ?id ?id_link ?ds_link ?hloc_l
 WHERE {
     ?s ?p ?o
     BIND (INT(1) AS ?total)
-    OPTIONAL { ?s ?p ?_page_integer } 
+    OPTIONAL { ?s ?p ?_page_integer }
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
     BIND (STR("JellyFishAbundance_Observation_System_1") AS ?id)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Things(', ?id,')')) AS ?id_link)
