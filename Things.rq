@@ -22,7 +22,7 @@
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
 
-SELECT DISTINCT ?info ?name ?url ?total ?next_link ?id ?id_link ?ds_link ?hloc_link ?loc_link ?desc_info ?name
+SELECT DISTINCT ?name ?total ?next_link ?id ?id_link ?ds_link ?hloc_link ?loc_link ?desc_info
 WHERE {
     ?s ?p ?o
     BIND (STR(1) AS ?total)
