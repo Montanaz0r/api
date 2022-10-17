@@ -1,37 +1,40 @@
-#+ summary: "Retrieves all the information about CYBELE datasets including the provided keyword, e.g., greece."
-#+ description: "Retrieves all the information about CYBELE datasets including the provided keyword, e.g., greece, in the dataset title or connected resources' labels. NOTE: make sure response content type is application/json"
-#+ endpoint: "https://www.foodie-cloud.org/sparql"
-#+ tags: [ "json" ]
-#+ method: "GET"
+#+ summary: Retrieves all the information about ILIAD Things
+#+ description: NOTE! make sure response content type is application/json
+#+ endpoint: https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample
+#+ tags:
+#+   - json
+#+ method: GET
 #+ pagination: 100
+#+ endpoint_in_url: False
 #+ transform: {
-#+   "id": "?s",
-#+   "metadata": {
-#+     "property": "?p",
-#+     "value": "?o"
-#+   },
-#+   "$anchor": "id"
+#+   "@iot.count": "?total",
+#+   "@iot.nextLink": "?next_link",
+#+   "value": {
+#+     "@iot.id": "?id",
+#+     "@iot.selfLink": "?id_link",
+#+     "description": "?desc_info",
+#+     "name: "?name",
+#+     "properties": {
+#+     },
+#+     "Datastreams@iot.navigationLink": "?ds_link",
+#+     "HistoricalLocations@iot.navigationLink": "?hloc_link",
+#+     "Locations@iot.navigationLink": "?loc_link",
+#+   }
 #+ }
 
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX cybeleBase: <https://w3id.org/cybele/>
-PREFIX bif: <bif:>
+PREFIX iliad-api: <https://w3id.org/iliad/api>
 
-SELECT DISTINCT ?s ?p ?o
+SELECT DISTINCT ?info ?name ?url ?total ?next_link ?id ?id_link ?ds_link ?hloc_link ?loc_link ?desc_info ?name
 WHERE {
-    ?s a dcat:Dataset.
-    ?s ?p ?o.
-    ?s ?p1 ?o1.
-    ?o1 skos:prefLabel ?label1.    
-    ?s ?p2 ?o2 .
-    ?o2 rdfs:label ?label2 .
-    ?s dct:title ?label3 .    
-    FILTER ((bif:contains(?label1,  ?_keyword) || bif:contains(?label2,  ?_keyword) || bif:contains(?label3,  ?_keyword)) && STRSTARTS (str(?s), str(cybeleBase:)))
+    ?s ?p ?o
+    BIND (INT(1) AS ?total)
+    OPTIONAL { ?s ?p ?_page_integer } 
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
+    BIND (STR("JellyFishAbundance_Observation_System_1") AS ?id)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Things(', ?id,')')) AS ?id_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Things(', ?id,')/Datastreams')) AS ?ds_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Things(', ?id,')/HistoricalLocations')) AS ?hloc_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Things(', ?id,')/Locations')) AS ?loc_link)
+    BIND (STR("System monitoring JellyFish Abundance") AS ?desc_info)
+    BIND (STR("JellyFish Abundance Monitoring System") AS ?name)
 }
-ORDER BY ?s
-LIMIT 100
-OFFSET 0
