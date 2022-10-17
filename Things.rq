@@ -13,12 +13,13 @@
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
 #+     "description": "?desc_info",
+#+     "name": "?thing_name",
 #+     },
 #+ }
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
 
-SELECT DISTINCT ?name ?total ?next_link ?id ?id_link ?ds_link ?hloc_link ?loc_link ?desc_info
+SELECT DISTINCT ?thing_name ?total ?next_link ?id ?id_link ?ds_link ?hloc_link ?loc_link ?desc_info
 WHERE {
     ?s ?p ?o
     BIND (STR(1) AS ?total)
