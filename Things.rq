@@ -12,11 +12,6 @@
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
-#+     "description": "?desc_info",
-#+     "name": ?name",
-#+     "Datastreams@iot.navigationLink": "?ds_link",
-#+     "HistoricalLocations@iot.navigationLink": "?hloc_link",
-#+     "Locations@iot.navigationLink": "?loc_link",
 #+     },
 #+ }
 
