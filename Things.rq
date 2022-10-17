@@ -17,7 +17,7 @@
 #+     "Datastreams@iot.navigationLink": "?ds_link",
 #+     "HistoricalLocations@iot.navigationLink": "?hloc_link",
 #+     "Locations@iot.navigationLink": "?loc_link",
-#+   }
+#+   },
 #+ }
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
