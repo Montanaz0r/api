@@ -25,7 +25,7 @@ PREFIX iliad-api: <https://w3id.org/iliad/api>
 SELECT DISTINCT ?info ?name ?url ?total ?next_link ?id ?id_link ?ds_link ?hloc_link ?loc_link ?desc_info ?name
 WHERE {
     ?s ?p ?o
-    BIND (INT(1) AS ?total)
+    BIND (STR(1) AS ?total)
     OPTIONAL { ?s ?p ?_page_integer }
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
     BIND (STR("JellyFishAbundance_Observation_System_1") AS ?id)
