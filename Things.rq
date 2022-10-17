@@ -14,6 +14,9 @@
 #+     "@iot.selfLink": "?id_link",
 #+     "description": "?desc_info",
 #+     "name": "?thing_name",
+#+     "Datastreams@iot.navigationLink": "?ds_link",
+#+     "HistoricalLocations@iot.navigationLink": "?hloc_link",
+#+     "Locations@iot.navigationLink": "?loc_link",
 #+     },
 #+ }
 
