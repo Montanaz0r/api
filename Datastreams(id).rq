@@ -30,15 +30,17 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT DISTINCT ?s ?obs_property ?sensor ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name ?ds_id ?name ?_datastream
 WHERE {
-    ?s a sosa:Observation ;
+    ?col a sosa:ObservationCollection ;
         sosa:observedProperty ?obs_property ;
-        sosa:madeBySensor ?sensor .
+        sosa:madeBySensor ?sensor ;
+        sosa:hasMember ?s .
+    ?s a sosa:Observation .
     BIND (STR(?_datastream) AS ?ds_id)
-    BIND (STRBEFORE(STR(?_datastream), "+") AS ?sensor_raw)
-    BIND (STRAFTER(STR(?_datastream), "+") AS ?obs_property_raw)
+    BIND (STRBEFORE(STR(?_datastream), "-") AS ?sensor_raw)
+    BIND (STRAFTER(STR(?_datastream), "-") AS ?obs_property_raw)
     BIND (URI(CONCAT("http://w3id.org/iliad/jellyfish/sensor/", ?sensor_raw)) AS ?sensor)
     BIND (URI(CONCAT("http://w3id.org/iliad/jellyfish/property/", ?obs_property_raw)) AS ?obs_property)
-    BIND (CONCAT("The datastream of jellyFish Abundance by user sensor: ",?sensor, " for observed property: ",?obs_property) as ?desc_info)
+    BIND (CONCAT("The datastream of jellyFish Abundance by user sensor: ",?sensor_raw, " for observed property: ",?obs_property_raw) as ?desc_info)
     BIND (CONCAT(?sensor_raw, ':', ?obs_property_raw) AS ?name)
     BIND (URI("http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation") AS ?obs_type)
     BIND (URI("http://qudt.org/2.1/vocab/unit") AS ?unit_definition)
