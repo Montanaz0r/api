@@ -7,14 +7,13 @@
 #+ pagination: 100
 #+ endpoint_in_url: False
 #+ transform: {
-#+   "description": "?info",
-#+   "$anchor": "description",
 #+   "@iot.count": "?total",
 #+   "@iot.nextLink": "?next_link",
 #+   "value": {
 #+     "@iot.id": "?id",
 #+     "@iot.selfLink": "?id_link",
 #+     "description": "?desc_info",
+#+     "name": "?name",
 #+     "observationType": "?obs_type",
 #+     "unitOfMeasurement": {
 #+       "symbol": "?unit_symbol",
@@ -34,18 +33,18 @@ PREFIX sosa:  <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 
-SELECT DISTINCT ?info ?obs_property ?sensor ?total ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name ?next_link
+SELECT DISTINCT ?obs_property ?sensor ?total ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name ?next_link ?name
 WHERE {
     ?col a sosa:ObservationCollection ;
         sosa:observedProperty ?obs_property ;
         sosa:madeBySensor ?sensor ;
         sosa:hasMember ?s .
     ?s a sosa:Observation .
-    BIND ("OGC SensorThings API - Datastreams" as ?info)
     BIND (STRAFTER(STR(?sensor), "sensor/") AS ?sensor_raw)
     BIND (STRAFTER(STR(?obs_property), "property/") AS ?obs_property_raw)
     BIND (CONCAT(?sensor_raw, "-", ?obs_property_raw) AS ?id)
     BIND (CONCAT("The datastream of jellyFish Abundance by user sensor: ",?sensor_raw, " for observed property: ",?obs_property_raw) AS ?desc_info)
+    BIND (CONCAT(?sensor_raw, ':', ?obs_property_raw) AS ?name)
     BIND (URI("http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation") AS ?obs_type)
     BIND (URI("http://qudt.org/2.1/vocab/unit") AS ?unit_definition)
     BIND (URI("U") AS ?unit_symbol)
