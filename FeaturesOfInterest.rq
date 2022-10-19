@@ -34,7 +34,7 @@ PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/> 
 
 
-SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords ?lat
+SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords
 WHERE {
     ?s a sosa:FeatureOfInterest ;
         a ?type ;
