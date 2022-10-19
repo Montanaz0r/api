@@ -18,7 +18,6 @@
 #+     "name": "?name",
 #+     "encodingType": "?enc_type",
 #+     "feature": {
-#+       "test_coordinates": "?lat$list",
 #+       "coordinates": "?cords",
 #+       "type": "?type",
 #+       },
