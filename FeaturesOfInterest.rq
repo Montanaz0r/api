@@ -19,8 +19,8 @@
 #+     "encodingType": "?enc_type",
 #+     "feature": {
 #+       "coordinates": "[?lat, ?long]"
-#+     },
 #+       "type": ?type",
+#+      },
 #+     },
 #+     "Observations@iot.navigationLink": "?obs_link",
 #+   }
