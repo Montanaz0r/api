@@ -1,11 +1,8 @@
 #+ summary: "Retrieve all Observations"
 #+ description: "NOTE: make sure response content type is application/json"
 #+ endpoint: "https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample"
-#+ tags:
-#+   - json
-#+ method: GET
-#+ pagination: 100
-#+ endpoint_in_url: False
+#+ tags: [ "test" ]
+#+ method: "GET"
 #+ transform: {
 #+   "description": "?info",
 #+   "$anchor": "description",
@@ -18,12 +15,9 @@
 #+     "resultTime": "?resultTime",
 #+     "result": {
 #+        "densityOfJF": "?densityOfJF",
-#+        "quantityOfJF": "?quantityOfJF",
 #+        "sampleSizeValue": "?sampleSizeValue",
 #+        "speciesScientificName": "?scientificName",
 #+        "wormsConcept": "?wormsConcept",
-#+        "stingByJF": "?stingByJF",
-#+        "beachedJF": "?beachedJF",
 #+     },
 #+     "Datastream@iot.navigationLink": "?datastream_link",
 #+     "FeatureOfInterest@iot.navigationLink": "?feature_link",
@@ -42,23 +36,16 @@ PREFIX dwc: <http://rs.tdwg.org/dwc/terms/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX bif: <bif:>
 
-SELECT DISTINCT ?info ?id ?id_link ?resultTime ?phenomenonTime ?densityOfJF ?quantityOfJF ?sampleSizeValue ?scientificName ?wormsConcept ?stingByJF ?beachedJF ?datastream_link ?feature_link ?total ?next_link
+SELECT DISTINCT ?info ?id ?id_link ?resultTime ?phenomenonTime ?densityOfJF ?sampleSizeValue ?scientificName ?wormsConcept ?datastream_link ?feature_link ?total ?next_link
 WHERE {
-    ?col a sosa:ObservationCollection ;
-      sosa:resultTime ?resultTime ;
-			sosa:phenomenonTime ?phenomenonTime ; 
-      sosa:hasMember ?s .
     ?s a sosa:Observation ;
+    	sosa:resultTime ?resultTime ;
+			sosa:phenomenonTime ?phenomenonTime ;
 			sosa:hasResult ?result .
-    OPTIONAL {
-      ?result oim-jf:densityOfJF ?densityOfJF ;
-        oim-jf:quantityOfJF ?quantityOfJF ; 
-			  dwc:sampleSizeValue ?sampleSizeValue ;
-			  dwc:scientificName ?scientificName ;
-			  oim-jf:wormsConcept ?wormsConcept ;
-        oim-jf:stingByJF ?stingByJF ;
-	      oim-jf:beachedJF ?beachedJF .
-    }
+    ?result oim-jf:densityOfJF ?densityOfJF ;
+			dwc:sampleSizeValue ?sampleSizeValue ;
+			dwc:scientificName ?scientificName ;
+			oim-jf:wormsConcept ?wormsConcept .
 		BIND ("OGC SensorThings API - Observations" as ?info)	  
     BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?id,')')) AS ?id_link)
@@ -69,5 +56,8 @@ WHERE {
 
     }
     OPTIONAL { ?s ?p ?_page } 
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', (xsd:integer(?_page)+1)*100)) AS ?next_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', xsd:integer(?_page)*100)) AS ?next_link)
+    OPTIONAL { ?s ?p ?_top }
+    OPTIONAL { ?s ?p ?_skip }
 }
+ORDER BY ?s LIMIT ?_top OFFSET ?_skip
