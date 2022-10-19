@@ -1,9 +1,11 @@
 #+ summary: "Retrieve a specific Observation"
 #+ description: "NOTE: make sure response content type is application/json"
 #+ endpoint: "https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample"
-#+ tags: [ "json" ]
-#+ method: "GET"
+#+ tags:
+#+   - json
+#+ method: GET
 #+ pagination: 100
+#+ endpoint_in_url: False
 #+ transform: {
 #+   "@iot.id": "?s",
 #+   "$anchor": "@iot.id",
