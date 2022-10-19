@@ -17,6 +17,9 @@
 #+     "description": "?desc_info",
 #+     "name": "?name",
 #+     "encodingType": "?enc_type",
+#+     "feature": {
+#+          },
+#+     "Observations@iot.navigationLink": "?obs_link",
 #+     },
 #+   }
 
