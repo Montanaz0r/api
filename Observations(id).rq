@@ -1,22 +1,23 @@
 #+ summary: "Retrieve a specific Observation"
 #+ description: "NOTE: make sure response content type is application/json"
 #+ endpoint: "https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample"
-#+ tags:
-#+   - json
-#+ method: GET
+#+ tags: [ "json" ]
+#+ method: "GET"
 #+ pagination: 100
-#+ endpoint_in_url: False
 #+ transform: {
-#+   "@iot.id": "?s",
+#+   "@iot.id": "?id",
 #+   "$anchor": "@iot.id",
 #+   "@iot.selfLink": "?id_link",
 #+   "phenomenonTime": "?phenomenonTime",
 #+   "resultTime": "?resultTime",
 #+   "result": {
-#+      "densityOfJF": "?densityOfJF",
-#+      "sampleSizeValue": "?sampleSizeValue",
-#+      "speciesScientificName": "?scientificName",
-#+      "wormsConcept": "?wormsConcept",
+#+        "densityOfJF": "?densityOfJF",
+#+        "quantityOfJF": "?quantityOfJF",
+#+        "sampleSizeValue": "?sampleSizeValue",
+#+        "speciesScientificName": "?scientificName",
+#+        "wormsConcept": "?wormsConcept",
+#+        "stingByJF": "?stingByJF",
+#+        "beachedJF": "?beachedJF",
 #+   },
 #+   "Datastream@iot.navigationLink": "?datastream_link",
 #+   "FeatureOfInterest@iot.navigationLink": "?feature_link",
@@ -54,4 +55,3 @@ WHERE {
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?_id,')/Datastream')) AS ?datastream_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?_id,')/FeautureOfInterest')) AS ?feature_link)
 }
-
