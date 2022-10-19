@@ -42,6 +42,7 @@ WHERE {
         sosa:madeBySensor ?sensor ;
         sosa:hasMember ?s .
     ?s a sosa:Observation .
+    BIND ("OGC SensorThings API - Datastreams" as ?info)
     BIND (STRAFTER(STR(?sensor), "sensor/") AS ?sensor_raw)
     BIND (STRAFTER(STR(?obs_property), "property/") AS ?obs_property_raw)
     BIND (CONCAT(?sensor_raw, "-", ?obs_property_raw) AS ?id)
