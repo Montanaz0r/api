@@ -6,7 +6,7 @@
 #+ method: GET
 #+ endpoint_in_url: False
 #+ transform: {
-#+   "@iot.id": "?id",
+#+   "@iot.id": "?ds_id",
 #+   "$anchor": "@iot.id",
 #+   "@iot.selfLink": "?id_link",
 #+   "description": "?desc_info",
@@ -28,13 +28,14 @@ PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX sosa:  <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT DISTINCT ?s ?obs_property ?sensor ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name ?name ?id
+SELECT DISTINCT ?s ?obs_property ?sensor ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name ?name ?ds_id
 WHERE {
     ?col a sosa:ObservationCollection ;
         sosa:observedProperty ?obs_property ;
         sosa:madeBySensor ?sensor ;
         sosa:hasMember ?s .
     ?s a sosa:Observation .
+    BIND (STR(?_id) AS ?ds_id)
     BIND (STRBEFORE(STR(?_id), "-") AS ?sensor_raw)
     BIND (STRAFTER(STR(?_id), "-") AS ?obs_property_raw)
     BIND (URI(CONCAT("http://w3id.org/iliad/jellyfish/sensor/", ?sensor_raw)) AS ?sensor)
