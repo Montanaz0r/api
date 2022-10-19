@@ -11,6 +11,10 @@
 #+   "$anchor": "description",
 #+   "@iot.count": "?total",
 #+   "@iot.nextLink": "?next_link",
+#+   "value": {
+#+     "@iot.id": "?id",
+#+     "@iot.selfLink": "?id_link",
+#+     },
 #+   }
 
 PREFIX iliad-api: <https://w3id.org/iliad/api>
