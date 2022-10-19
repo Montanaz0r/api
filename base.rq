@@ -1,9 +1,11 @@
 #+ summary: "Access to all SensorThings resources begins at the base resource path"
 #+ description: "Navigating to the base resource path will return a JSON array of the available SensorThings resource endpoints. NOTE: make sure response content type is application/json"
 #+ endpoint: "https://www.foodie-cloud.org/sparql"
-#+ tags: [ "json" ]
-#+ method: "GET"
+#+ tags:
+#+   - json
+#+ method: GET
 #+ pagination: 100
+#+ endpoint_in_url: False
 #+ transform: {
 #+   "description": "?info",
 #+   "$anchor": "description",
