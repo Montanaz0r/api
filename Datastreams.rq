@@ -7,6 +7,8 @@
 #+ pagination: 100
 #+ endpoint_in_url: False
 #+ transform: {
+#+   "description": "?info",
+#+   "$anchor": "description",
 #+   "@iot.count": "?total",
 #+   "@iot.nextLink": "?next_link",
 #+   "value": {
