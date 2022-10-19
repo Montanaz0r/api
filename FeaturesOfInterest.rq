@@ -18,6 +18,7 @@
 #+     "name": "?name",
 #+     "encodingType": "?enc_type",
 #+     "feature": {
+#+       "coordinates": "?cords",
 #+       },
 #+     "Observations@iot.navigationLink": "?obs_link",
 #+     },
