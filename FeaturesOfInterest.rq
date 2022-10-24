@@ -18,7 +18,7 @@
 #+     "name": "?name",
 #+     "encodingType": "?enc_type",
 #+     "feature": {
-#+       "coordinates": "?cords",
+#+       "coordinates": "?sequence",
 #+       "type": "?type",
 #+       },
 #+     "Observations@iot.navigationLink": "?obs_link",
@@ -34,7 +34,7 @@ PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/> 
 
 
-SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords
+SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords ?sequence
 WHERE {
     ?s a sosa:FeatureOfInterest ;
         a ?type ;
@@ -42,6 +42,7 @@ WHERE {
         wgs84:lat ?lat ;
         wgs84:long ?long ;
         dwc:locality ?location .
+    BIND (sequence(4,3,2) AS ?sequence)
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
     BIND (CONCAT('Location #', ?location) AS ?name)
     BIND (STR('application/vnd.geo+json') AS ?enc_type)
