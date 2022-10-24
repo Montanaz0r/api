@@ -31,7 +31,8 @@ PREFIX sosa:  <http://www.w3.org/ns/sosa/>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX wgs84:  <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/> 
+PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
 
 SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords
@@ -45,7 +46,8 @@ WHERE {
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
     BIND (CONCAT('Location #', ?location) AS ?name)
     BIND (STR('application/vnd.geo+json') AS ?enc_type)
-    BIND (CONCAT('[ ', ?lat, ', ', ?long, ' ]') AS ?cords)
+    BIND ("POINT(0,0)"^^geo:wktLiteral AS ?cords)
+    #BIND (CONCAT('[ ', ?lat, ', ', ?long, ' ]') AS ?cords)
     BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(', ?id,')')) AS ?id_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(', ?id,')/Observations')) AS ?obs_link)
