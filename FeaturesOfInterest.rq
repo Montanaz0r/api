@@ -18,7 +18,8 @@
 #+     "name": "?name",
 #+     "encodingType": "?enc_type",
 #+     "feature": {
-#+       "coordinates": "?cords",
+#+       "coordinates": "?lat",
+#+       "coordinates2": "?long",
 #+       "asList": [123, 123],
 #+       "type": "?type",
 #+       },
