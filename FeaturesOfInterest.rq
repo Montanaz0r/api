@@ -20,7 +20,7 @@
 #+     "feature": {
 #+       "coordinates": "?lat",
 #+       "coordinates2": "?long",
-#+       "asList": [$var:?lat, $var:?long],
+#+       "$asList": "?lat",
 #+       "type": "?type",
 #+       },
 #+     "Observations@iot.navigationLink": "?obs_link",
