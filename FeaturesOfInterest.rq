@@ -46,7 +46,7 @@ WHERE {
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
     BIND (CONCAT('Location #', ?location) AS ?name)
     BIND (STR('application/vnd.geo+json') AS ?enc_type)
-    BIND ("POINT(0,0)"^^geo:wktLiteral AS ?cords)
+    BIND ("POINT(0 0)"^^geo:wktLiteral AS ?cords)
     #BIND (CONCAT('[ ', ?lat, ', ', ?long, ' ]') AS ?cords)
     BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(', ?id,')')) AS ?id_link)
