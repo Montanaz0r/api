@@ -19,7 +19,7 @@
 #+     "encodingType": "?enc_type",
 #+     "feature": {
 #+       "coordinates": "?lat$list",
-#+       "coordinates2": "?long_d&&?lat_d$list",
+#+       "coordinates2": "?long_d/?lat_d$list",
 #+       "asList": [1.234, 3.555],
 #+       "type": "?type",
 #+       },
