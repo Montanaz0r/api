@@ -45,8 +45,8 @@ WHERE {
         wgs84:lat ?lat ;
         wgs84:long ?long ;
         dwc:locality ?location .
-    BIND (?lat^^xsd:decimal AS ?lat_d)
-    #BIND (DECIMAL(?long) AS ?long_d)
+    BIND ("1.234"^^xsd:decimal AS ?lat_d)
+    BIND (STRDT(?long, xsd:decimal) AS ?long_d)
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
     BIND (CONCAT('Location #', ?location) AS ?name)
     BIND (STR('application/vnd.geo+json') AS ?enc_type)
