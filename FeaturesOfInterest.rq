@@ -18,7 +18,7 @@
 #+     "name": "?name",
 #+     "encodingType": "?enc_type",
 #+     "feature": {
-#+       "coordinates": "?lat",
+#+       "coordinates": "?lat$list",
 #+       "coordinates2": "?lat_d",
 #+       "asList": [1.234, 3.555],
 #+       "type": "?type",
