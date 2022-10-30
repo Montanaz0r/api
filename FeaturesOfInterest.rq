@@ -37,7 +37,7 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
 
-SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords ?lat_d
+SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords ?lat_d ?long_d
 WHERE {
     ?s a sosa:FeatureOfInterest ;
         a ?type ;
@@ -46,6 +46,7 @@ WHERE {
         wgs84:long ?long ;
         dwc:locality ?location .
     BIND ("1.234"^^xsd:decimal AS ?lat_d)
+    BIND (DECIMAL(?long) AS ?long_d)
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
     BIND (CONCAT('Location #', ?location) AS ?name)
     BIND (STR('application/vnd.geo+json') AS ?enc_type)
