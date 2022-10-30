@@ -19,7 +19,7 @@
 #+     "encodingType": "?enc_type",
 #+     "feature": {
 #+       "coordinates": "?lat$list",
-#+       "coordinates2": "?long_d$list",
+#+       "coordinates2": "?long_d/lat_d$list",
 #+       "asList": [1.234, 3.555],
 #+       "type": "?type",
 #+       },
@@ -45,7 +45,7 @@ WHERE {
         wgs84:lat ?lat ;
         wgs84:long ?long ;
         dwc:locality ?location .
-    BIND ("1.234"^^xsd:decimal AS ?lat_d)
+    BIND (STRDT(?lat, xsd:) AS ?lat_d)
     BIND (STRDT(?long, xsd:decimal) AS ?long_d)
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
     BIND (CONCAT('Location #', ?location) AS ?name)
