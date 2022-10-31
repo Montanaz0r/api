@@ -19,7 +19,7 @@
 #+     "encodingType": "?enc_type",
 #+     "feature": {
 #+       "coordinates": "?lat$list",
-#+       "coordinates2$list": "?long_d",
+#+       "coordinates2": "?long_d",
 #+       "asList": [1.234, 3.555],
 #+       "type": "?type",
 #+       },
@@ -37,7 +37,7 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
 
-SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords ?lat_d ?long_d
+SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords ?cords
 WHERE {
     ?s a sosa:FeatureOfInterest ;
         a ?type ;
@@ -45,8 +45,9 @@ WHERE {
         wgs84:lat ?lat ;
         wgs84:long ?long ;
         dwc:locality ?location .
-    BIND (STRDT(?lat, xsd:) AS ?lat_d)
-    BIND (STRDT(?long, xsd:decimal) AS ?long_d)
+    # BIND (STRDT(?lat, xsd:) AS ?lat_d)
+    # BIND (STRDT(?long, xsd:decimal) AS ?long_d)
+    BIND (?lat && ?long AS ?cords)
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
     BIND (CONCAT('Location #', ?location) AS ?name)
     BIND (STR('application/vnd.geo+json') AS ?enc_type)
