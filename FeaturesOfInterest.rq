@@ -18,7 +18,7 @@
 #+     "name": "?name",
 #+     "encodingType": "?enc_type",
 #+     "feature": {
-#+       "coordinates": {"a": "?cords_d$list", "b": "something_else"},
+#+       "coordinates": "?cords_d@list",
 #+       "asList": [1.234, 3.555],
 #+       "type": "?type",
 #+       },
