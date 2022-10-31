@@ -42,7 +42,7 @@ WHERE {
     ?s a sosa:FeatureOfInterest ;
         a ?type ;
         rdfs:label ?desc_info ;
-        wgs84:lat|wsg84:long ?long ;
+        wgs84:lat|wgs84:long ?long ;
         #wgs84:long ?long ;
         dwc:locality ?location .
     BIND (STRDT(?lat, xsd:decimal) AS ?lat_d)
