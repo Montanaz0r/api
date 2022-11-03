@@ -20,7 +20,7 @@
 #+     "feature": {
 #+       "coordinates": "?cords$list",
 #+       "type": "?geo_type",
-#+       "distance_from_shore": "?shore_distance",
+#+       "distanceFromShore": "?shore_distance",
 #+       },
 #+     "Observations@iot.navigationLink": "?obs_link",
 #+     },
