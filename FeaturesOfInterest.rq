@@ -20,6 +20,7 @@
 #+     "feature": {
 #+       "coordinates": "?cords$list",
 #+       "type": "?geo_type",
+#+       "distance_from_shore": "?shore_distance",
 #+       },
 #+     "Observations@iot.navigationLink": "?obs_link",
 #+     },
@@ -33,16 +34,17 @@ PREFIX wgs84:  <http://www.w3.org/2003/01/geo/wgs84_pos#>
 PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-
-SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords ?geo_type
+SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords ?geo_type ?shore_distance
 WHERE {
     ?s a sosa:FeatureOfInterest ;
         a ?type ;
         rdfs:label ?desc_info ;
         wgs84:lat ?lat ;
         wgs84:long ?long ;
-        dwc:locality ?location .
+        dwc:locality ?location ;
+        oim-jf:distanceFromShore ?shore_distance .
         FILTER (?type != URI('http://www.w3.org/ns/sosa/FeatureOfInterest'))
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
     BIND (STRAFTER(STR(?type), '#') AS ?geo_type)
