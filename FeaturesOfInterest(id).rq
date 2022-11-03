@@ -4,7 +4,6 @@
 #+ tags:
 #+   - json
 #+ method: GET
-#+ pagination: 100
 #+ endpoint_in_url: False
 #+ transform: {
 #+   "@iot.id": "?raw_id",
@@ -30,7 +29,7 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-SELECT DISTINCT ?raw_id ?id_link ?desc_info ?name ?enc_type ?cords ?geo_type ?shore_distance ?obs_link
+SELECT DISTINCT ?raw_id ?id_link ?desc_info ?name ?enc_type ?cords ?geo_type ?shore_distance ?obs_link ?raw_id ?_id
 WHERE {
     ?id_link a sosa:FeatureOfInterest ;
         a ?type ;
