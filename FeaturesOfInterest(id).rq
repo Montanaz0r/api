@@ -29,9 +29,9 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-SELECT DISTINCT ?raw_id ?id_link ?desc_info ?name ?enc_type ?cords ?geo_type ?shore_distance ?obs_link ?raw_id ?_id
+SELECT DISTINCT ?raw_id ?id_link ?desc_info ?name ?enc_type ?cords ?geo_type ?shore_distance ?obs_link ?raw_id ?_id ?foi_id
 WHERE {
-    ?id_link a sosa:FeatureOfInterest ;
+    ?foi_id a sosa:FeatureOfInterest ;
         a ?type ;
         rdfs:label ?desc_info ;
         wgs84:lat ?lat ;
@@ -40,6 +40,7 @@ WHERE {
         oim-jf:distanceFromShore ?shore_distance .
         FILTER (?type != URI('http://www.w3.org/ns/sosa/FeatureOfInterest'))
     BIND (STR(?_id) AS ?raw_id)
+    BIND (URI(CONCAT("http://w3id.org/iliad/jellyfish/feature/", ?raw_id)) AS ?foi_id)
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
     BIND (STRAFTER(STR(?type), '#') AS ?geo_type)
     BIND (CONCAT('Location #', ?location) AS ?name)
