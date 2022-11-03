@@ -43,6 +43,7 @@ WHERE {
         wgs84:lat ?lat ;
         wgs84:long ?long ;
         dwc:locality ?location .
+        FILTER (?type != URI('http://www.w3.org/ns/sosa/FeatureOfInterest'))
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
     BIND (CONCAT('Location #', ?location) AS ?name)
     BIND (STR('application/vnd.geo+json') AS ?enc_type)
