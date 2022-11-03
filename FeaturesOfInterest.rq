@@ -19,7 +19,7 @@
 #+     "encodingType": "?enc_type",
 #+     "feature": {
 #+       "coordinates": "?cords$list",
-#+       "type": "?type",
+#+       "type": "?geo_type",
 #+       },
 #+     "Observations@iot.navigationLink": "?obs_link",
 #+     },
@@ -35,7 +35,7 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
 
-SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords
+SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords ?geo_type
 WHERE {
     ?s a sosa:FeatureOfInterest ;
         a ?type ;
@@ -45,6 +45,7 @@ WHERE {
         dwc:locality ?location .
         FILTER (?type != URI('http://www.w3.org/ns/sosa/FeatureOfInterest'))
     BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
+    BIND (STRAFTER(STR(?type), '#') AS ?geo_type)
     BIND (CONCAT('Location #', ?location) AS ?name)
     BIND (STR('application/vnd.geo+json') AS ?enc_type)
     BIND (CONCAT(?lat, ', ', ?long) AS ?cords)
