@@ -20,6 +20,7 @@
 #+     "feature": {
 #+       "coordinates": "?cords_d$list",
 #+       "asList": [1.234, 3.555],
+#+       "asList2": [?cords, ?location],
 #+       "type": "?type",
 #+       },
 #+     "Observations@iot.navigationLink": "?obs_link",
