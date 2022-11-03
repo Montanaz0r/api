@@ -29,7 +29,7 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-SELECT DISTINCT ?raw_id ?id_link ?desc_info ?name ?enc_type ?cords ?geo_type ?shore_distance ?obs_link ?raw_id ?_id ?foi_id
+SELECT DISTINCT ?raw_id ?id_link ?desc_info ?name ?enc_type ?cords ?geo_type ?shore_distance ?obs_link ?_id ?foi_id
 WHERE {
     ?foi_id a sosa:FeatureOfInterest ;
         a ?type ;
