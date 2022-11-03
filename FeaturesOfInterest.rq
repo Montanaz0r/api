@@ -35,7 +35,7 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 
 
-SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?lat ?long ?cords
+SELECT DISTINCT ?info ?total ?type ?desc_info ?lat ?long ?next_link ?id ?id_link ?name ?obs_link ?enc_type ?cords
 WHERE {
     ?s a sosa:FeatureOfInterest ;
         a ?type ;
