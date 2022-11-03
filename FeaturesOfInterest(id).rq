@@ -1,0 +1,51 @@
+#+ summary: Retrieves all the information about ILIAD FeaturesOfInterest
+#+ description: NOTE! make sure response content type is application/json
+#+ endpoint: https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample
+#+ tags:
+#+   - json
+#+ method: GET
+#+ pagination: 100
+#+ endpoint_in_url: False
+#+ transform: {
+#+   "@iot.id": "?raw_id",
+#+   "@iot.selfLink": "?id_link",
+#+   "description": "?desc_info",
+#+   "name": "?name",
+#+   "encodingType": "?enc_type",
+#+   "feature": {
+#+     "coordinates": "?cords$list",
+#+     "type": "?geo_type",
+#+     "distanceFromShore": "?shore_distance",
+#+     },
+#+   "Observations@iot.navigationLink": "?obs_link",
+#+   }
+
+PREFIX iliad-api: <https://w3id.org/iliad/api>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sosa:  <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX wgs84:  <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
+
+SELECT DISTINCT ?raw_id ?id_link ?desc_info ?name ?enc_type ?cords ?geo_type ?shore_distance ?obs_link
+WHERE {
+    ?id_link a sosa:FeatureOfInterest ;
+        a ?type ;
+        rdfs:label ?desc_info ;
+        wgs84:lat ?lat ;
+        wgs84:long ?long ;
+        dwc:locality ?location ;
+        oim-jf:distanceFromShore ?shore_distance .
+        FILTER (?type != URI('http://www.w3.org/ns/sosa/FeatureOfInterest'))
+    BIND (STR(?_id) AS ?raw_id)
+    BIND ("OGC SensorThings API - FeaturesOfInterest" AS ?info)
+    BIND (STRAFTER(STR(?type), '#') AS ?geo_type)
+    BIND (CONCAT('Location #', ?location) AS ?name)
+    BIND (STR('application/vnd.geo+json') AS ?enc_type)
+    BIND (CONCAT(?lat, ', ', ?long) AS ?cords)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(', ?_id,')')) AS ?id_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(', ?_id,')/Observations')) AS ?obs_link)
+}
