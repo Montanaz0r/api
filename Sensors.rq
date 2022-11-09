@@ -44,9 +44,9 @@ WHERE {
         FILTER (?type != URI('http://www.w3.org/ns/sosa/Sensor'))
     BIND ("OGC SensorThings API - Sensors" AS ?info)
     BIND (STRAFTER(STR(?type), '#') AS ?sensor_type)
+    BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
     BIND (STR(CONCAT("Human_Sensor - ", ?id)) AS ?name)
     BIND (STR('application/text/plan') AS ?enc_type)
-    BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Sensors(', ?id,')')) AS ?id_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Sensors(', ?id,')/Datastreams')) AS ?ds_link)
         {
