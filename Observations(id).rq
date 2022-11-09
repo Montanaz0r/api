@@ -4,7 +4,6 @@
 #+ tags:
 #+   - json
 #+ method: GET
-#+ pagination: 100
 #+ endpoint_in_url: False
 #+ transform: {
 #+   "@iot.id": "?id",
