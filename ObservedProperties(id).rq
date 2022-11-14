@@ -24,7 +24,7 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-SELECT DISTINCT ?_id ?name ?id_link ?ds_link ?desc_info ?obs_property
+SELECT DISTINCT ?_id ?name ?id_link ?ds_link ?desc_info ?obs_property ?id
 WHERE {
     ?s a sosa:ObservationCollection ;
         sosa:observedProperty ?obs_property .
