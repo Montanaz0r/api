@@ -1,4 +1,4 @@
-#+ summary: Retrieves all the information about specific ILIAD Sensor
+#+ summary: Retrieves all the information about specific ILIAD ObservedProperty
 #+ description: NOTE! make sure response content type is application/json
 #+ endpoint: https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample
 #+ tags:
@@ -24,7 +24,7 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-SELECT DISTINCT ?_id ?name ?id_link ?ds_link ?desc_info ?obs_property ?id
+SELECT DISTINCT ?id ?_id ?id_link ?desc_info ?name ?obs_property ?ds_link
 WHERE {
     ?s a sosa:ObservationCollection ;
         sosa:observedProperty ?obs_property .
