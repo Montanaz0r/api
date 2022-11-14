@@ -7,9 +7,10 @@
 #+ endpoint_in_url: False
 #+ transform: {
 #+   "@iot.id": "?id",
+#+   "@iot.selfLink": "?id_link",
 #+   "description": "?desc_info",
 #+   "name": "?name",
-#+   "definition: "?obs_proprty",
+#+   "definition": "?obs_proprty",
 #+   "Datastreams@iot.navigationLink": "?ds_link",
 #+   }
 
