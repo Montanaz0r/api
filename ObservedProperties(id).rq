@@ -6,7 +6,7 @@
 #+ method: GET
 #+ endpoint_in_url: False
 #+ transform: {
-#+   "@iot.id": "?raw_id",
+#+   "@iot.id": "?id",
 #+   "@iot.selfLink": "?id_link",
 #+   "description": "?desc_info",
 #+   "name": "?name",
@@ -24,12 +24,15 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-SELECT DISTINCT ?_id ?info ?name ?id_link ?ds_link
+SELECT DISTINCT ?_id ?info ?name ?id_link ?ds_link ?desc_info
 WHERE {
     ?s a sosa:ObservationCollection ;
         sosa:observedProperty ?obs_property .
         FILTER (?obs_property = URI(CONCAT('http://w3id.org/iliad/jellyfish/property/', ?_id)))
     BIND ("OGC SensorThings API - ObservedProperties" AS ?info)
+    BIND (STRAFTER(STR(?obs_property), 'property/') AS ?prop_name_1)
+    BIND (STRBEFORE(STR(?prop_name_1), 'Property') AS ?prop_name)
+    BIND (STR(CONCAT("The total count for ", ?prop_name)) AS ?desc_info)
     BIND (REPLACE(STR(?obs_property), "^.*/([^/]*)$", "$1") as ?id)
     BIND (STR(CONCAT("ObservedProperty - ", ?id)) AS ?name)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/ObservedProperties(', ?id,')')) AS ?id_link)
