@@ -14,7 +14,7 @@
 #+   "value": {
 #+     "@iot.id": "?location",
 #+     "@iot.selfLink": "?id_link",
-#+     "description": "?desc_info",
+#+     "description": "?name",
 #+     "name": "?name",
 #+     "encodingType": "?enc_type",
 #+     "location": {
