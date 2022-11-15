@@ -32,6 +32,7 @@ WHERE {
         a ?type ;
         dwc:locality ?location .
         FILTER (?type != URI('http://www.w3.org/ns/sosa/FeatureOfInterest'))
+        FILTER (?location = STR(?_id))
     BIND (STR(?_id) AS ?location)
     BIND (CONCAT('Location #', ?location) AS ?name)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Locations(', ?location,')')) AS ?id_link)
