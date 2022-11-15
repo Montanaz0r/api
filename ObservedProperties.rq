@@ -49,5 +49,5 @@ WHERE {
 
     }
     OPTIONAL { ?s ?p ?_page_integer } 
-    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Sensors?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/ObservedProperties?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
 }
