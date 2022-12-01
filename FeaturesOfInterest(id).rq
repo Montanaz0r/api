@@ -1,4 +1,4 @@
-#+ summary: Retrieves all the information about specific ILIAD FeaturesOfInterest
+#+ summary: Retrieves all the information about ILIAD FeaturesOfInterest
 #+ description: NOTE! make sure response content type is application/json
 #+ endpoint: https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample
 #+ tags:
@@ -29,7 +29,7 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-SELECT DISTINCT ?raw_id ?id_link ?desc_info ?name ?enc_type ?cords ?geo_type ?shore_distance ?obs_link ?_id
+SELECT DISTINCT ?raw_id ?id_link ?desc_info ?name ?enc_type ?cords ?geo_type ?shore_distance ?obs_link ?_id ?foi_id
 WHERE {
     ?s a sosa:FeatureOfInterest ;
         a ?type ;
