@@ -11,6 +11,8 @@
 #+   "description": "?name",
 #+   "name": "?name",
 #+   "location": {
+#+     "coordinates": "?cords$list",
+#+     "type": "?geo_type",
 #+     },
 #+   "Things@iot.navigationLink": "?things_link",
 #+   "HistoricalLocations@iot.navigationLink": "?hlocs_link",
@@ -26,15 +28,30 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-SELECT DISTINCT ?_id ?id_link ?name ?things_link ?hlocs_link ?location
+SELECT DISTINCT ?_id ?id_link ?name ?cords ?geo_type ?things_link ?hlocs_link
 WHERE {
+    BIND (STR(?_id) AS ?location)
+    BIND (URI(CONCAT('http://w3id.org/iliad/jellyfish/sensor/', ?location)) AS ?location_uri)
     ?s a sosa:FeatureOfInterest ;
         a ?type ;
-        dwc:locality ?location .
+        wgs84:lat ?lat ;
+        wgs84:long ?long .
         FILTER (?type != URI('http://www.w3.org/ns/sosa/FeatureOfInterest'))
-        FILTER (?location = STR(?_id))
-    BIND (STR(?_id) AS ?location)
+    ?s3 sosa:hasFeatureOfInterest ?s ;
+        sosa:resultTime ?res1 ;
+        sosa:madeBySensor ?location_uri .
+    FILTER (xsd:dateTime(?res1)=?latest)
+    {
+    SELECT (max(xsd:dateTime(?res)) as ?latest) 
+    WHERE {
+    ?s2 a sosa:ObservationCollection ;
+        sosa:resultTime ?res ;
+        sosa:madeBySensor ?location_uri .
+    } 
+    }
     BIND (CONCAT('Location #', ?location) AS ?name)
+    BIND (CONCAT(?lat, ', ', ?long) AS ?cords)
+    BIND (STRAFTER(STR(?type), '#') AS ?geo_type)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Locations(', ?location,')')) AS ?id_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Locations(', ?location,')/Things')) AS ?things_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Locations(', ?location,')/HistoricalLocations')) AS ?hlocs_link)
