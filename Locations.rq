@@ -48,14 +48,14 @@ WHERE {
     ?s3 sosa:hasFeatureOfInterest ?s ;
         sosa:resultTime ?res1 ;
         sosa:madeBySensor ?sensor .
- FILTER (xsd:dateTime(?res1)=?latest)
+    FILTER (xsd:dateTime(?res1)=?latest)
     {
     SELECT ?sensor (max(xsd:dateTime(?res)) as ?latest) 
     WHERE {
     ?s2 a sosa:ObservationCollection ;
         sosa:resultTime ?res ;
         sosa:madeBySensor ?sensor .
-    } GROUP BY ?sensor
+    }
     }
     BIND ("OGC SensorThings API - Locations" AS ?info)
     BIND (CONCAT(?lat, ', ', ?long) AS ?cords)
