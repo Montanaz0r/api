@@ -43,7 +43,6 @@ WHERE {
         a ?type ;
         wgs84:lat ?lat ;
         wgs84:long ?long .
-        BIND (CONCAT(?lat, '/', ?long) AS ?cords) .
         FILTER (?type != URI('http://www.w3.org/ns/sosa/FeatureOfInterest'))
     ?s3 sosa:hasFeatureOfInterest ?s ;
         sosa:resultTime ?res1 ;
