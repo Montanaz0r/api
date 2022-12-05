@@ -35,7 +35,7 @@ PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-SELECT DISTINCT (max(?desc_info) AS ?desc) (min(?agent_conf) AS ?conf) ?type ?total ?sensor_type ?name ?enc_type ?id_link ?ds_link ?info
+SELECT DISTINCT (max(?desc_info) AS ?desc) (min(?agent_conf) AS ?conf) ?type ?total ?sensor_type ?name ?enc_type ?id_link ?ds_link ?info ?id
 WHERE {
     ?s a sosa:Sensor ;
         a ?type ;
