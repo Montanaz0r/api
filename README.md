@@ -7,30 +7,39 @@ Data is retrieved from a semantic store (Virtuoso triplestore).
 |:-----------------------------------------------------------------------------------------------------|
 
 ## Table of Contents
-- [Base Resource Path](#Base-Resource-Path)
-- [Observations](#Observations)
-  * [Retrieve all Observations](#Retrieve-all-Observations)
-  * [Retrieve a specific Observation](#Retrieve-a-specific-Observation)
-  * [Retrieve Observations for a specific Datastream](#Retrieve-Observations-for-a-specific-Datastream)
-- [Datastreams](#Datastreams)
-  * [Retrieve all Datastreams](#Retrieve-all-Datastreams)
-  * [Retrieve a specific Datastream](#Retrieve-a-specific-Datastream)
-  * [Retrieve Datastream for a specific Observation](#Retrieve-Datastream-for-a-specific-Observation)
-- [Features of Interest](#Features-of-Interest)
-  * [Retrieve all FeaturesOfInterest](#Retrieve-all-FeaturesOfInterest)
-  * [Retrieve a specific FeatureOfInterest](#Retrieve-a-specific-FeatureOfInterest)
-  * [Retrieve FeatureOfInterest for a specific Observation](#Retrieve-FeatureOfInterest-for-a-specific-Observation)
-- [Observed properties](#Observed-properties)
-  * [Retrieve all the Observed properties](#Retrieve-all-the-Observed-properties)
-  * [Retrieve the ObservedProperty of a specific Datastream.](#Retrieve-the-ObservedProperty-of-a-specific-Datastream.)
-- [Sensors](#Sensors)
-  * [Retrieve all Sensors](#Retrieve-all-Sensors)
-  * [Retrieve a specific Sensor](#Retrieve-a-specific-Sensor)
-  * [Retrieve the Sensor of a specific Datastream](#Retrieve-the-Sensor-of-a-specific-Datastream)
-- [Things](#Things)
-  * [Retrieve all Things](#Retrieve-all-Things)
-  * [Retrieve a specific Thing](#Retrieve-a-specific-Thing)
-  * [Retrieve the Thing of a specific Datastream](#Retrieve-the-Thing-of-a-specific-Datastream)
+- [ILIAD OGC SensorThings API](#iliad-ogc-sensorthings-api)
+  - [Table of Contents](#table-of-contents)
+  - [Base Resource Path](#base-resource-path)
+  - [Observations](#observations)
+    - [Retrieve all Observations](#retrieve-all-observations)
+    - [Retrieve a specific Observation](#retrieve-a-specific-observation)
+    - [Retrieve Observations for a specific Datastream](#retrieve-observations-for-a-specific-datastream)
+  - [Datastreams](#datastreams)
+    - [Retrieve all the Datastreams](#retrieve-all-the-datastreams)
+    - [Retrieve a specific Datastream.](#retrieve-a-specific-datastream)
+    - [Retrieve DataStream for a specific Observation](#retrieve-datastream-for-a-specific-observation)
+  - [Features of Interest](#features-of-interest)
+    - [Retrieve all FeaturesOfInterest](#retrieve-all-featuresofinterest)
+    - [Retrieve a specific FeatureOfInterest](#retrieve-a-specific-featureofinterest)
+    - [Retrieve FeatureOfInterest for a specific Observation](#retrieve-featureofinterest-for-a-specific-observation)
+  - [Observed properties](#observed-properties)
+    - [Retrieve all the Observed properties](#retrieve-all-the-observed-properties)
+    - [Retrieve a specific ObservedProperty](#retrieve-a-specific-observedproperty)
+    - [Retrieve the ObservedProperty of a specific Datastream.](#retrieve-the-observedproperty-of-a-specific-datastream)
+  - [Sensors](#sensors)
+    - [Retrieve all Sensors](#retrieve-all-sensors)
+    - [Retrieve a specific Sensor](#retrieve-a-specific-sensor)
+    - [Retrieve the Sensor of a specific Datastream](#retrieve-the-sensor-of-a-specific-datastream)
+  - [Things](#things)
+    - [Retrieve all Things](#retrieve-all-things)
+    - [Retrieve a specific Thing](#retrieve-a-specific-thing)
+    - [Retrieve the Thing of a specific Datastream](#retrieve-the-thing-of-a-specific-datastream)
+  - [Locations](#locations)
+    - [Retrieve all Locations](#retrieve-all-locations)
+    - [Retrieve a specific Thing](#retrieve-a-specific-thing-1)
+  - [HistoricalLocations](#historicallocations)
+    - [Retrieve all Locations](#retrieve-all-locations-1)
+    - [Retrieve a specific Thing](#retrieve-a-specific-thing-2)
 
 
 ## Base Resource Path
@@ -73,49 +82,100 @@ For example:
 https://w3id.org/iliad/api/v1.0/Datastreams(3-jellyFishAbundanceProperty)
 ```
 ### Retrieve DataStream for a specific Observation
-```
-https://w3id.org/iliad/api/v1.0/Observations(id)/Datastream
-```
+TBD
 
 
 ## Features of Interest
 ### Retrieve all FeaturesOfInterest
-
+```
+https://w3id.org/iliad/api/v1.0/FeaturesOfInterest
+```
 ### Retrieve a specific FeatureOfInterest
-
+```
+https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(id)
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(1-18)
+```
 ### Retrieve FeatureOfInterest for a specific Observation
-```
-https://w3id.org/iliad/api/v1.0/Observations(id)/FeatureOfInterest
-```
+TBD
 
 ## Observed properties
 ### Retrieve all the Observed properties
-
+```
+https://w3id.org/iliad/api/v1.0/ObservedProperties
+```
+### Retrieve a specific ObservedProperty
+```
+https://w3id.org/iliad/api/v1.0/ObservedProperties(id)
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/ObservedProperties(jellyFishAbundanceProperty)
+```
 ### Retrieve the ObservedProperty of a specific Datastream.
-```
-https://w3id.org/iliad/api/v1.0//Datastreams(id)/ObservedProperty
-```
+TBD
 
 ## Sensors
 ### Retrieve all Sensors
-
+```
+https://w3id.org/iliad/api/v1.0/Sensors
+```
 ### Retrieve a specific Sensor
-
+```
+https://w3id.org/iliad/api/v1.0/Sensors(id)
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Sensors(1)
+```
 ### Retrieve the Sensor of a specific Datastream
-```
-https://w3id.org/iliad/api/v1.0//Datastreams(id)/Sensor
-```
+TBD
 
 ## Things
 ### Retrieve all Things
-
+```
+https://w3id.org/iliad/api/v1.0/Things
+```
 ### Retrieve a specific Thing
-
+```
+https://w3id.org/iliad/api/v1.0/Things(id)
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Things(1)
+```
 ### Retrieve the Thing of a specific Datastream
+TBD
+
+## Locations
+### Retrieve all Locations
 ```
-https://w3id.org/iliad/api/v1.0//Datastreams(id)/Thing
+https://w3id.org/iliad/api/v1.0/Locations
+```
+### Retrieve a specific Thing
+```
+https://w3id.org/iliad/api/v1.0/Locations(id)
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Locations(1)
 ```
 
+## HistoricalLocations
+### Retrieve all Locations
+```
+https://w3id.org/iliad/api/v1.0/HistoricalLocations
+```
+### Retrieve a specific Thing
+```
+https://w3id.org/iliad/api/v1.0/HistoricalLocations(id)
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/HistoricalLocations(1)
+```
 
 For more information about OGC API please refer to:
 * [GitHub repository](https://github.com/opengeospatial/sensorthings).
