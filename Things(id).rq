@@ -1,0 +1,46 @@
+#+ summary: Retrieves all the information about specific ILIAD Sensor
+#+ description: NOTE! make sure response content type is application/json
+#+ endpoint: https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample
+#+ tags:
+#+   - json
+#+ method: GET
+#+ endpoint_in_url: False
+#+ transform: {
+#+   "@iot.id": "?raw_id",
+#+   "@iot.selfLink": "?id_link",
+#+   "description": "?desc",
+#+   "name": "?name",
+#+   "encodingType": "?enc_type",
+#+   "metadata": {
+#+     "type": "?sensor_type",
+#+     "agentConfidence": "?conf",
+#+     },
+#+   "Datastreams@iot.navigationLink": "?ds_link",
+#+   }
+
+PREFIX iliad-api: <https://w3id.org/iliad/api>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sosa:  <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX wgs84:  <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
+
+SELECT DISTINCT (max(?desc_info) AS ?desc) (min(?agent_conf) AS ?conf) ?type ?total ?sensor_type ?name ?enc_type ?id_link ?ds_link ?info ?_id ?id
+WHERE {
+    ?s a sosa:Sensor ;
+        a ?type ;
+        rdfs:label ?desc_info ;
+        oim-jf:agentConfidence ?agent_conf .
+        FILTER (?type != URI('http://www.w3.org/ns/sosa/Sensor'))
+        FILTER (?s = URI(CONCAT('http://w3id.org/iliad/jellyfish/sensor/', ?_id)))
+    BIND ("OGC SensorThings API - Sensors" AS ?info)
+    BIND (STRAFTER(STR(?type), '#') AS ?sensor_type)
+    BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
+    BIND (STR(CONCAT("Human_Sensor - ", ?id)) AS ?name)
+    BIND (STR('text/plan') AS ?enc_type)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Sensors(', ?id,')')) AS ?id_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Sensors(', ?id,')/Datastreams')) AS ?ds_link)
+}
