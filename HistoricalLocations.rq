@@ -31,7 +31,7 @@ PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
 
-SELECT ?time ?info ?location ?total ?things_link ?locations_link
+SELECT ?time ?info ?location ?total ?things_link ?locations_link ?id_link
 WHERE {
     ?s a sosa:ObservationCollection ;
         sosa:resultTime ?res .
