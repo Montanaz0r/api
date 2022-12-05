@@ -1,4 +1,4 @@
-#+ summary: "Retrieves all the information about ILIAD Observations for a specific Datastream"
+#+ summary: "Retrieves all the information about ILIAD Observations for a specific FeatureOfInterest"
 #+ description: "NOTE: make sure response content type is application/json"
 #+ endpoint: "https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample"
 #+ tags:
@@ -42,8 +42,7 @@ WHERE {
     ?col a sosa:ObservationCollection ;
       sosa:resultTime ?resultTime ;
 			sosa:phenomenonTime ?phenomenonTime ; 
-      sosa:madeBySensor ?sensor_URI ;
-      sosa:observedProperty ?property_URI ;
+      sosa:hasFeatureOfInterest ?foi_URI ;
       sosa:hasMember ?s .
     ?s a sosa:Observation ;
 			sosa:hasResult ?result .
@@ -58,11 +57,9 @@ WHERE {
     }
 	BIND ("OGC SensorThings API - Observations" as ?info)	  
     BIND (REPLACE(STR(?s), "^.*/([^/]*)$", "$1") as ?id)
-    BIND (REPLACE(STR(?sensor_URI), "^.*/([^/]*)$", "$1") as ?sensor)
-    BIND (REPLACE(STR(?property_URI), "^.*/([^/]*)$", "$1") as ?property)
-    OPTIONAL { ?s ?p ?_sensor }
-    OPTIONAL { ?s ?p ?_property }
-    FILTER (?sensor= ?_sensor && ?property=?_property)
+    BIND (REPLACE(STR(?foi_URI), "^.*/([^/]*)$", "$1") as ?foi)
+    OPTIONAL { ?s ?p ?_foi }
+    FILTER (?foi= ?_foi)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?id,')')) AS ?id_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?id,')/Datastream')) AS ?datastream_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations(', ?id,')/FeautureOfInterest')) AS ?feature_link)
@@ -70,16 +67,13 @@ WHERE {
        SELECT (count(*) as ?total) 
        WHERE { 
         ?col a sosa:ObservationCollection ;
-          sosa:madeBySensor ?sensor_URI ;
-          sosa:observedProperty ?property_URI ;
+          sosa:hasFeatureOfInterest ?foi_URI ;
           sosa:hasMember ?s .
         ?s a sosa:Observation ;
 			    sosa:hasResult ?result .
-        BIND (REPLACE(STR(?sensor_URI), "^.*/([^/]*)$", "$1") as ?s1)
-        BIND (REPLACE(STR(?property_URI), "^.*/([^/]*)$", "$1") as ?p1)
-        OPTIONAL { ?s ?p ?_sensor }
-        OPTIONAL { ?s ?p ?_property }
-        FILTER (?s1= ?_sensor && ?p1=?_property)
+        BIND (REPLACE(STR(?foi_URI), "^.*/([^/]*)$", "$1") as ?foi2)
+        OPTIONAL { ?s ?p ?_foi }
+        FILTER (?foi2= ?_foi)
       }
     }
     OPTIONAL { ?s ?p ?_page } 
