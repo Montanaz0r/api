@@ -70,4 +70,6 @@ WHERE {
     }
     OPTIONAL { ?s ?p ?_page_integer } 
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams?$top=100&$skip=', (?_page_integer+1)*100)) AS ?next_link)
-} GROUP BY ?sensor ?obs_property
+} 
+GROUP BY ?sensor ?obs_property
+ORDER BY ?id
