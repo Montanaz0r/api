@@ -66,3 +66,4 @@ WHERE {
     OPTIONAL { ?s ?p ?_page } 
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Observations?$top=100&$skip=', (xsd:integer(?_page)+1)*100)) AS ?next_link)
 }
+ORDER BY ?id
