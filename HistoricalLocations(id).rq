@@ -1,37 +1,38 @@
-#+ summary: "Retrieves all the information about CYBELE datasets including the provided keyword, e.g., greece."
-#+ description: "Retrieves all the information about CYBELE datasets including the provided keyword, e.g., greece, in the dataset title or connected resources' labels. NOTE: make sure response content type is application/json"
-#+ endpoint: "https://www.foodie-cloud.org/sparql"
-#+ tags: [ "json" ]
-#+ method: "GET"
-#+ pagination: 100
+#+ summary: Retrieves all the information about ILIAD HistoricalLocations
+#+ description: NOTE! make sure response content type is application/json
+#+ endpoint: https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample
+#+ tags:
+#+   - json
+#+ method: GET
+#+ endpoint_in_url: False
 #+ transform: {
-#+   "id": "?s",
-#+   "metadata": {
-#+     "property": "?p",
-#+     "value": "?o"
-#+   },
-#+   "$anchor": "id"
+#+   "@iot.id": "?location",
+#+   "@iot.selfLink": "?id_link",
+#+   "time": "?time",
+#+   "Locations@iot.navigationLink": "?locations_link",
+#+   "Thing@iot.navigationLink": "?things_link",
 #+ }
 
+PREFIX iliad-api: <https://w3id.org/iliad/api>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX dct: <http://purl.org/dc/terms/>
-PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX cybeleBase: <https://w3id.org/cybele/>
-PREFIX bif: <bif:>
+PREFIX sosa:  <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX wgs84:  <http://www.w3.org/2003/01/geo/wgs84_pos#>
+PREFIX rdfs:  <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dwc:  <http://rs.tdwg.org/dwc/terms/>
+PREFIX geo: <http://www.opengis.net/ont/geosparql#>
+PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
-SELECT DISTINCT ?s ?p ?o
+
+SELECT ?time ?info ?location ?things_link ?locations_link ?id_link ?_id
 WHERE {
-    ?s a dcat:Dataset.
-    ?s ?p ?o.
-    ?s ?p1 ?o1.
-    ?o1 skos:prefLabel ?label1.    
-    ?s ?p2 ?o2 .
-    ?o2 rdfs:label ?label2 .
-    ?s dct:title ?label3 .    
-    FILTER ((bif:contains(?label1,  ?_keyword) || bif:contains(?label2,  ?_keyword) || bif:contains(?label3,  ?_keyword)) && STRSTARTS (str(?s), str(cybeleBase:)))
+    ?s a sosa:ObservationCollection ;
+        sosa:resultTime ?res .
+    FILTER (?s = URI(CONCAT('http://w3id.org/iliad/jellyfish/observation/', ?_id)))
+    BIND ("OGC SensorThings API - HistoricalLocations" AS ?info)
+    BIND (xsd:dateTime(?res) AS ?time)
+    BIND (STRAFTER(STR(?s), '/observation/') AS ?location)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/HistoricalLocations(', ?location,')')) AS ?id_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/HistoricalLocations(', ?location,')/Things')) AS ?things_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/HistoricalLocations(', ?location,')/Locations')) AS ?locations_link)
 }
-ORDER BY ?s
-LIMIT 100
-OFFSET 0
