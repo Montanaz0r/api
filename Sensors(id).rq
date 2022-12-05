@@ -6,7 +6,7 @@
 #+ method: GET
 #+ endpoint_in_url: False
 #+ transform: {
-#+   "@iot.id": "?raw_id",
+#+   "@iot.id": "?id",
 #+   "@iot.selfLink": "?id_link",
 #+   "description": "?desc",
 #+   "name": "?name",

@@ -28,7 +28,7 @@ SELECT DISTINCT ?id ?_id ?id_link ?desc_info ?name ?obs_property ?ds_link
 WHERE {
     ?s a sosa:ObservationCollection ;
         sosa:observedProperty ?obs_property .
-        FILTER (?obs_property = URI(CONCAT('http://w3id.org/iliad/jellyfish/property/', ?_id, 'Property')))
+        FILTER (?obs_property = URI(CONCAT('http://w3id.org/iliad/jellyfish/property/', ?_id)))
     BIND (STRAFTER(STR(?obs_property), 'property/') AS ?prop_name_1)
     BIND (STRBEFORE(STR(?prop_name_1), 'Property') AS ?prop_name)
     BIND (STR(CONCAT("The total count for ", ?prop_name)) AS ?desc_info)
