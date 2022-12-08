@@ -37,8 +37,8 @@ WHERE {
     ?s a sosa:Observation .
     BIND (URI(CONCAT('http://w3id.org/iliad/jellyfish/observation/', ?_obs)) AS ?obs_uri)
     FILTER (?s = ?obs_uri)
-    BIND (STRAFTER(?sensor, '/sensor/') AS ?sensor_id)
-    BIND (STRAFTER(?obs_property, '/property/') AS ?property_id)
+    BIND (STRAFTER(STR(?sensor), '/sensor/') AS ?sensor_id)
+    BIND (STRAFTER(STR(?obs_property), '/property/') AS ?property_id)
     BIND (CONCAT(?sensor_id, '-', ?property_id) AS ?ds_id)
     BIND (CONCAT("The datastream of jellyFish Abundance by user sensor: ",?sensor_id, " for observed property: ",?property_id) as ?desc_info)
     BIND (CONCAT(?sensor_id, ':', ?property_id) AS ?name)
