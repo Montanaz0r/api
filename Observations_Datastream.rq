@@ -1,0 +1,56 @@
+#+ summary: Retrieves all the information about specific ILIAD Datastream related to the Observation
+#+ description: NOTE! make sure response content type is application/json
+#+ endpoint: https://www.foodie-cloud.org/sparql?default-graph-uri=http://w3id.org/iliad/dataaset/jf-pilot-sample
+#+ tags:
+#+   - json
+#+ method: GET
+#+ endpoint_in_url: False
+#+ transform: {
+#+   "@iot.id": "?ds_id",
+#+   "$anchor": "@iot.id",
+#+   "@iot.selfLink": "?id_link",
+#+   "description": "?desc_info",
+#+   "name": "?name",
+#+   "observationType": "?obs_type",
+#+   "unitOfMeasurement": {
+#+     "symbol": "?unit_symbol",
+#+     "name": "?unit_name",
+#+     "definition": "?unit_definition",
+#+     },
+#+   "Observations@iot.navigationLink": "?obs_link",
+#+   "ObservedProperty@iot.navigationLink": "?op_link",
+#+   "Sensor@iot.navigationLink": "?sensor_link",
+#+   "Thing@iot.navigationLink": "?thing_link",
+#+   }
+
+PREFIX iliad-api: <https://w3id.org/iliad/api>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX sosa:  <http://www.w3.org/ns/sosa/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?s ?obs_property ?sensor ?id_link ?obs_link ?op_link ?sensor_link ?thing_link ?obs_type ?desc_info ?unit_definition ?unit_symbol ?unit_name ?name ?ds_id ?_obs
+WHERE {
+    ?col a sosa:ObservationCollection ;
+        sosa:observedProperty ?obs_property ;
+        sosa:madeBySensor ?sensor ;
+        sosa:hasMember ?s .
+    ?s a sosa:Observation .
+    BIND (URI(CONCAT('http://w3id.org/iliad/jellyfish/observation/', ?_obs)) AS ?obs_uri)
+    FILTER (?s = ?obs_uri)
+    BIND (STR(?_obs) AS ?ds_id)
+    BIND (STRBEFORE(STR(?_id), "-") AS ?sensor_raw)
+    BIND (STRAFTER(STR(?_id), "-") AS ?obs_property_raw)
+    BIND (URI(CONCAT("http://w3id.org/iliad/jellyfish/sensor/", ?sensor_raw)) AS ?sensor)
+    BIND (URI(CONCAT("http://w3id.org/iliad/jellyfish/property/", ?obs_property_raw)) AS ?obs_property)
+    BIND (CONCAT("The datastream of jellyFish Abundance by user sensor: ",?sensor_raw, " for observed property: ",?obs_property_raw) as ?desc_info)
+    BIND (CONCAT(?sensor_raw, ':', ?obs_property_raw) AS ?name)
+    BIND (URI("http://www.opengis.net/def/observationType/OGC-OM/2.0/OM_ComplexObservation") AS ?obs_type)
+    BIND (URI("http://qudt.org/2.1/vocab/unit") AS ?unit_definition)
+    BIND (URI("U") AS ?unit_symbol)
+    BIND (URI("Unitless") AS ?unit_name)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?_id,')')) AS ?id_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?_id,')/Observations')) AS ?obs_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?_id,')/ObservedProperty')) AS ?op_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?_id,')/Sensor')) AS ?sensor_link)
+    BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/Datastreams(', ?_id,')/Thing')) AS ?thing_link)
+}
