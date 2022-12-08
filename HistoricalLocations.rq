@@ -39,7 +39,7 @@ WHERE {
     BIND ("OGC SensorThings API - HistoricalLocations" AS ?info)
     BIND (xsd:dateTime(?res) AS ?time)
     BIND (STRAFTER(STR(?s), '/observation/') AS ?obs_id)
-    BIND (STRAFTER(STR(?s), '/sensor') AS ?sens_id)
+    BIND (STRAFTER(STR(?sens), '/sensor') AS ?sens_id)
     BIND (CONCAT(?obs_id, '-', ?sens_id) AS ?location)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/HistoricalLocations(', ?location,')')) AS ?id_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/HistoricalLocations(', ?location,')/Things')) AS ?things_link)
