@@ -17,11 +17,11 @@ Data is retrieved from a semantic store (Virtuoso triplestore).
   - [Datastreams](#datastreams)
     - [Retrieve all the Datastreams](#retrieve-all-the-datastreams)
     - [Retrieve a specific Datastream.](#retrieve-a-specific-datastream)
-    - [Retrieve DataStream for a specific Observation](#retrieve-datastream-for-a-specific-observation)
+    - [Retrieve Datastream for a specific Observation](#retrieve-datastream-for-a-specific-observation)
   - [Features of Interest](#features-of-interest)
     - [Retrieve all FeaturesOfInterest](#retrieve-all-featuresofinterest)
     - [Retrieve a specific FeatureOfInterest](#retrieve-a-specific-featureofinterest)
-    - [Retrieve FeatureOfInterest for a specific Observation](#retrieve-featureofinterest-for-a-specific-observation)
+    - [Retrieve Observation for a specific FeatureOfInterest](#retrieve-observation-for-a-specific-featureofinterest)
   - [Observed properties](#observed-properties)
     - [Retrieve all the Observed properties](#retrieve-all-the-observed-properties)
     - [Retrieve a specific ObservedProperty](#retrieve-a-specific-observedproperty)
@@ -61,7 +61,7 @@ https://w3id.org/iliad/api/v1.0/Observations(3-10-361-Rhopilema%2520nomadica)
 ```
 ### Retrieve Observations for a specific Datastream
 ```
-https://w3id.org/iliad/api/v1.0//Datastreams(id)/Observations
+https://w3id.org/iliad/api/v1.0/Datastreams(id)/Observations
 ```
 For example:
 ```
@@ -81,7 +81,7 @@ For example:
 ```
 https://w3id.org/iliad/api/v1.0/Datastreams(3-jellyFishAbundanceProperty)
 ```
-### Retrieve DataStream for a specific Observation
+### Retrieve Datastream for a specific Observation
 TBD
 
 
@@ -98,8 +98,14 @@ For example:
 ```
 https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(1-18)
 ```
-### Retrieve FeatureOfInterest for a specific Observation
-TBD
+### Retrieve Observation for a specific FeatureOfInterest
+```
+https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(id)/Observations
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(1-18)/Observations
+```
 
 ## Observed properties
 ### Retrieve all the Observed properties
