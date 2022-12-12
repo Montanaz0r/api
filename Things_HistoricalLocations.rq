@@ -52,7 +52,8 @@ WHERE {
             WHERE {
                 ?x a sosa:ObservationCollection ;
                     sosa:madeBySensor ?sens2 .
-                FILTER (?sens2=?thing_uri)    
+                BIND (URI(CONCAT('http://w3id.org/iliad/jellyfish/sensor/', ?_thing)) AS ?thing_uri2)
+                FILTER (?sens2=?thing_uri2)
             } }
 
     }
