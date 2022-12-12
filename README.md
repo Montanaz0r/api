@@ -33,17 +33,23 @@ Data is retrieved from a semantic store (Virtuoso triplestore).
   - [Sensors](#sensors)
     - [Retrieve all Sensors](#retrieve-all-sensors)
     - [Retrieve a specific Sensor](#retrieve-a-specific-sensor)
-    - [Retrieve the Sensor of a specific Datastream](#retrieve-the-sensor-of-a-specific-datastream)
+    - [Retrieve all Datastreams related to a specific Sensor](#retrieve-all-datastreams-related-to-a-specific-sensor)
   - [Things](#things)
     - [Retrieve all Things](#retrieve-all-things)
     - [Retrieve a specific Thing](#retrieve-a-specific-thing)
-    - [Retrieve the Thing of a specific Datastream](#retrieve-the-thing-of-a-specific-datastream)
+    - [Retrieve all Datastreams related to a specific Thing](#retrieve-all-datastreams-related-to-a-specific-thing)
+    - [Retrieve all HistoricalLocations related to a specific Thing](#retrieve-all-historicallocations-related-to-a-specific-thing)
+    - [Retrieve a Location of a specific Thing](#retrieve-a-location-of-a-specific-thing)
   - [Locations](#locations)
     - [Retrieve all Locations](#retrieve-all-locations)
-    - [Retrieve a specific Thing](#retrieve-a-specific-thing-1)
+    - [Retrieve a specific Location](#retrieve-a-specific-location)
+    - [Retrieve all HistoricalLocations related to a specific Location](#retrieve-all-historicallocations-related-to-a-specific-location)
+    - [Retrieve a Thing related to a specific Location](#retrieve-a-thing-related-to-a-specific-location)
   - [HistoricalLocations](#historicallocations)
-    - [Retrieve all Locations](#retrieve-all-locations-1)
-    - [Retrieve a specific Thing](#retrieve-a-specific-thing-2)
+    - [Retrieve all HistoricalLocations](#retrieve-all-historicallocations)
+    - [Retrieve a specific HistoricalLocation](#retrieve-a-specific-historicallocation)
+    - [Retrieve a Location for a specific HistoricalLocation](#retrieve-a-location-for-a-specific-historicallocation)
+    - [Retrieve a Thing for a specific HistoricalLocation](#retrieve-a-thing-for-a-specific-historicallocation)
 
 
 ## Base Resource Path
@@ -184,8 +190,14 @@ For example:
 ```
 https://w3id.org/iliad/api/v1.0/Sensors(1)
 ```
-### Retrieve the Sensor of a specific Datastream
-TBD
+### Retrieve all Datastreams related to a specific Sensor
+```
+https://w3id.org/iliad/api/v1.0/Sensors(id)/Datastreams
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Sensors(1)/Datastreams
+```
 
 ## Things
 ### Retrieve all Things
@@ -200,35 +212,89 @@ For example:
 ```
 https://w3id.org/iliad/api/v1.0/Things(1)
 ```
-### Retrieve the Thing of a specific Datastream
-TBD
+### Retrieve all Datastreams related to a specific Thing
+```
+https://w3id.org/iliad/api/v1.0/Things(id)/Datastreams
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Things(2943)/Datastreams
+```
+### Retrieve all HistoricalLocations related to a specific Thing
+```
+https://w3id.org/iliad/api/v1.0/Things(id)/HistoricalLocations
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Things(2943)/HistoricalLocations
+```
+### Retrieve a Location of a specific Thing
+```
+https://w3id.org/iliad/api/v1.0/Things(id)/Locations
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Things(2943)/Locations
+```
 
 ## Locations
 ### Retrieve all Locations
 ```
 https://w3id.org/iliad/api/v1.0/Locations
 ```
-### Retrieve a specific Thing
+### Retrieve a specific Location
 ```
 https://w3id.org/iliad/api/v1.0/Locations(id)
 ```
 For example:
 ```
-https://w3id.org/iliad/api/v1.0/Locations(1)
+https://w3id.org/iliad/api/v1.0/Locations(2943)
+```
+### Retrieve all HistoricalLocations related to a specific Location
+```
+https://w3id.org/iliad/api/v1.0/Locations(id)/HistoricalLocations
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Locations(2943)/HistoricalLocations
+```
+### Retrieve a Thing related to a specific Location
+```
+https://w3id.org/iliad/api/v1.0/Locations(id)/Things
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Locations(1)/Things
 ```
 
 ## HistoricalLocations
-### Retrieve all Locations
+### Retrieve all HistoricalLocations
 ```
 https://w3id.org/iliad/api/v1.0/HistoricalLocations
 ```
-### Retrieve a specific Thing
+### Retrieve a specific HistoricalLocation
 ```
 https://w3id.org/iliad/api/v1.0/HistoricalLocations(id)
 ```
 For example:
 ```
-https://w3id.org/iliad/api/v1.0/HistoricalLocations(1)
+https://w3id.org/iliad/api/v1.0/HistoricalLocations(10089-3239)
+```
+### Retrieve a Location for a specific HistoricalLocation
+```
+https://w3id.org/iliad/api/v1.0/HistoricalLocations(id)/Locations
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/HistoricalLocations(10089-3239)/Locations
+```
+### Retrieve a Thing for a specific HistoricalLocation
+```
+https://w3id.org/iliad/api/v1.0/HistoricalLocations(id)/Things
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/HistoricalLocations(10089-3239)/Things
 ```
 
 For more information about OGC API please refer to:
