@@ -66,8 +66,7 @@ WHERE {
             WHERE{
                 ?col a sosa:ObservationCollection ;
                 sosa:observedProperty ?obs_property ;
-                sosa:madeBySensor ?sensor .
-                FILTER (?sensor = ?sensor_uri)
+                sosa:madeBySensor ?sensor_uri .
             }  
         }
     }
