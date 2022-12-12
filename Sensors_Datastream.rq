@@ -42,7 +42,7 @@ WHERE {
         sosa:madeBySensor ?sensor ;
         sosa:hasMember ?s .
     ?s a sosa:Observation .
-    BIND (URI(CONCAT('http://w3id.org/iliad/jellyfish/sensor/', ?sens)) AS ?sensor_uri)
+    BIND (URI(CONCAT('http://w3id.org/iliad/jellyfish/sensor/', ?_sens)) AS ?sensor_uri)
     FILTER (?sensor = ?sensor_uri)
     BIND ("OGC SensorThings API - Datastreams" as ?info)
     BIND (STRAFTER(STR(?sensor), "sensor/") AS ?sensor_raw)
