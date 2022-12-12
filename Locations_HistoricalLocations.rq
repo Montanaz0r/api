@@ -7,6 +7,8 @@
 #+ pagination: 100
 #+ endpoint_in_url: False
 #+ transform: {
+#+   "description": "?info",
+#+   "$anchor": "description",
 #+   "@iot.count": "?total",
 #+   "value": {
 #+      "@iot.id": "?location",
@@ -28,11 +30,12 @@ PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX oim-jf:  <http://w3id.org/iliad/oim/jellyfish#>
 
 
-SELECT ?time ?info ?location ?things_link ?locations_link ?id_link ?_loc ?total
+SELECT ?time ?info ?location ?things_link ?locations_link ?id_link ?_loc ?total ?info
 WHERE {
     ?s a sosa:ObservationCollection ;
         sosa:madeBySensor ?sens ;
         sosa:resultTime ?res .
+    BIND ("OGC SensorThings API - HistoricalLocations" AS ?info)
     BIND (STRAFTER(STR(?s), '/observation/') AS ?obs_id)
     BIND (STRAFTER(STR(?sens), '/sensor/') AS ?sens_id)
     BIND (CONCAT(?obs_id, '-', ?sens_id) AS ?location)
