@@ -47,10 +47,12 @@ WHERE {
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/HistoricalLocations(', ?location,')/Things')) AS ?things_link)
     BIND (URI(CONCAT('https://w3id.org/iliad/api/v1.0/HistoricalLocations(', ?location,')/Locations')) AS ?locations_link)
             {
-        SELECT (count(*) as ?total) WHERE { 
-            ?x a sosa:ObservationCollection ;
-                 sosa:madeBySensor ?thing_uri .
-            }
+        SELECT (count(*) as ?total) WHERE {
+            SELECT DISTINCT ?x
+            WHERE {
+                ?x a sosa:ObservationCollection ;
+                    sosa:madeBySensor ?thing_uri .
+            } }
 
     }
     OPTIONAL { ?s ?p ?_page_integer } 
