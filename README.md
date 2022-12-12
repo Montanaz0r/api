@@ -13,19 +13,23 @@ Data is retrieved from a semantic store (Virtuoso triplestore).
   - [Observations](#observations)
     - [Retrieve all Observations](#retrieve-all-observations)
     - [Retrieve a specific Observation](#retrieve-a-specific-observation)
-    - [Retrieve Observations for a specific Datastream](#retrieve-observations-for-a-specific-datastream)
+    - [Retrieve Datastream for a sepcific Observation](#retrieve-datastream-for-a-sepcific-observation)
+    - [Retrieve FeatureOfInterest for a sepcific Observation](#retrieve-featureofinterest-for-a-sepcific-observation)
   - [Datastreams](#datastreams)
     - [Retrieve all the Datastreams](#retrieve-all-the-datastreams)
     - [Retrieve a specific Datastream.](#retrieve-a-specific-datastream)
-    - [Retrieve Datastream for a specific Observation](#retrieve-datastream-for-a-specific-observation)
+    - [Retrieve all Observations related to the Datastream](#retrieve-all-observations-related-to-the-datastream)
+    - [Retrieve ObservedProperty related to the Datastream](#retrieve-observedproperty-related-to-the-datastream)
+    - [Retrieve Sensor related to the Datastream](#retrieve-sensor-related-to-the-datastream)
+    - [Retrieve Thing related to the Datastream](#retrieve-thing-related-to-the-datastream)
   - [Features of Interest](#features-of-interest)
     - [Retrieve all FeaturesOfInterest](#retrieve-all-featuresofinterest)
     - [Retrieve a specific FeatureOfInterest](#retrieve-a-specific-featureofinterest)
-    - [Retrieve Observation for a specific FeatureOfInterest](#retrieve-observation-for-a-specific-featureofinterest)
+    - [Retrieve all Observations related to a specific FeatureOfInterest](#retrieve-all-observations-related-to-a-specific-featureofinterest)
   - [Observed properties](#observed-properties)
     - [Retrieve all the Observed properties](#retrieve-all-the-observed-properties)
     - [Retrieve a specific ObservedProperty](#retrieve-a-specific-observedproperty)
-    - [Retrieve the ObservedProperty of a specific Datastream.](#retrieve-the-observedproperty-of-a-specific-datastream)
+    - [Retrieve all Datastreams related to a specific ObservedProperty](#retrieve-all-datastreams-related-to-a-specific-observedproperty)
   - [Sensors](#sensors)
     - [Retrieve all Sensors](#retrieve-all-sensors)
     - [Retrieve a specific Sensor](#retrieve-a-specific-sensor)
@@ -57,15 +61,23 @@ https://w3id.org/iliad/api/v1.0/Observations(id)
 ```
 For example:
 ```
-https://w3id.org/iliad/api/v1.0/Observations(3-10-361-Rhopilema%2520nomadica)
+https://w3id.org/iliad/api/v1.0/Observations(4540-15-2078-Rhizostoma%20pulmo)
 ```
-### Retrieve Observations for a specific Datastream
+### Retrieve Datastream for a sepcific Observation
 ```
-https://w3id.org/iliad/api/v1.0/Datastreams(id)/Observations
+https://w3id.org/iliad/api/v1.0/Observations(id)/Datastream
 ```
 For example:
 ```
-https://w3id.org/iliad/api/v1.0/Datastreams(3-jellyFishAbundanceProperty)/Observations
+https://w3id.org/iliad/api/v1.0/Observations(4540-15-2078-Rhizostoma%20pulmo)/Datastream
+```
+### Retrieve FeatureOfInterest for a sepcific Observation
+```
+https://w3id.org/iliad/api/v1.0/Observations(id)/FeatureOfInterest
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Observations(4540-15-2078-Rhizostoma%20pulmo)/FeatureOfInterest
 ```
 
 ## Datastreams
@@ -81,8 +93,38 @@ For example:
 ```
 https://w3id.org/iliad/api/v1.0/Datastreams(3-jellyFishAbundanceProperty)
 ```
-### Retrieve Datastream for a specific Observation
-TBD
+### Retrieve all Observations related to the Datastream
+```
+https://w3id.org/iliad/api/v1.0/Datastreams(id)/Observations
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Datastreams(3-jellyFishAbundanceProperty)/Observations
+```
+### Retrieve ObservedProperty related to the Datastream
+```
+https://w3id.org/iliad/api/v1.0/Datastreams(id)/ObservedProperty
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Datastreams(3-jellyFishAbundanceProperty)/ObservedProperty
+```
+### Retrieve Sensor related to the Datastream
+```
+https://w3id.org/iliad/api/v1.0/Datastreams(id)/Sensor
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Datastreams(3-jellyFishAbundanceProperty)/Sensor
+```
+### Retrieve Thing related to the Datastream
+```
+https://w3id.org/iliad/api/v1.0/Datastreams(id)/Thing
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/Datastreams(3-jellyFishAbundanceProperty)/Thing
+```
 
 
 ## Features of Interest
@@ -98,7 +140,7 @@ For example:
 ```
 https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(1-18)
 ```
-### Retrieve Observation for a specific FeatureOfInterest
+### Retrieve all Observations related to a specific FeatureOfInterest
 ```
 https://w3id.org/iliad/api/v1.0/FeaturesOfInterest(id)/Observations
 ```
@@ -120,8 +162,14 @@ For example:
 ```
 https://w3id.org/iliad/api/v1.0/ObservedProperties(jellyFishAbundanceProperty)
 ```
-### Retrieve the ObservedProperty of a specific Datastream.
-TBD
+### Retrieve all Datastreams related to a specific ObservedProperty
+```
+https://w3id.org/iliad/api/v1.0/ObservedProperties(id)/Datastreams
+```
+For example:
+```
+https://w3id.org/iliad/api/v1.0/ObservedProperties(jellyFishAbundanceProperty)/Datastreams
+```
 
 ## Sensors
 ### Retrieve all Sensors
